@@ -1,0 +1,219 @@
+{
+  "date": "2026-09-05",
+  "data_used": "Fabricated fixtures only, including tests exercising real-environment protections; no real health records",
+  "python": "3.13.15",
+  "platform": "Darwin arm64",
+  "dependencies": {
+    "whoop-personal-copilot": "0.2.0",
+    "mcp": "1.29.1",
+    "Authlib": "1.8.0",
+    "httpx": "0.28.1",
+    "keyring": "25.7.0",
+    "sqlcipher3": "0.6.2",
+    "jsonschema": "4.26.0"
+  },
+  "sqlcipher_engine": "4.12.0 community",
+  "pytest": {
+    "command": [
+      "uv",
+      "run",
+      "--locked",
+      "--offline",
+      "--cache-dir",
+      "/private/tmp/whoop-uv-cache",
+      "pytest",
+      "-q"
+    ],
+    "status": "passed",
+    "stdout": "........................................................................ [ 28%]\n........................................................................ [ 56%]\n........................................................................ [ 85%]\n......................................                                   [100%]\n254 passed in 2.58s",
+    "stderr": ""
+  },
+  "ruff_lint": {
+    "command": [
+      "uv",
+      "run",
+      "--locked",
+      "--offline",
+      "--cache-dir",
+      "/private/tmp/whoop-uv-cache",
+      "ruff",
+      "check",
+      "."
+    ],
+    "status": "passed",
+    "stdout": "All checks passed!",
+    "stderr": ""
+  },
+  "ruff_format": {
+    "command": [
+      "uv",
+      "run",
+      "--locked",
+      "--offline",
+      "--cache-dir",
+      "/private/tmp/whoop-uv-cache",
+      "ruff",
+      "format",
+      "--check",
+      "src",
+      "tests"
+    ],
+    "status": "passed",
+    "stdout": "28 files already formatted",
+    "stderr": ""
+  },
+  "lock_check": {
+    "command": [
+      "uv",
+      "lock",
+      "--check",
+      "--offline",
+      "--cache-dir",
+      "/private/tmp/whoop-uv-cache"
+    ],
+    "status": "passed",
+    "stdout": "",
+    "stderr": "Resolved 53 packages in 0.80ms"
+  },
+  "openapi": {
+    "bytes": 73012,
+    "sha256": "087501087b4efe5ec28975b89b3b18448dd4eda7b0d524b74fdbb611194293aa",
+    "source": "https://api.prod.whoop.com/developer/doc/openapi.json"
+  },
+  "wheel_build": {
+    "command": [
+      "uv",
+      "build",
+      "--wheel",
+      "--offline",
+      "--cache-dir",
+      "/private/tmp/whoop-uv-cache",
+      "--out-dir",
+      "/var/folders/gk/hl40qwgj5958x8jlwnnt3q700000gn/T/whoop-f1-validation-rpccjy0j/dist"
+    ],
+    "status": "passed",
+    "stdout": "",
+    "stderr": "Building wheel...\nSuccessfully built /var/folders/gk/hl40qwgj5958x8jlwnnt3q700000gn/T/whoop-f1-validation-rpccjy0j/dist/whoop_personal_copilot-0.2.0-py3-none-any.whl",
+    "packaged_contract_matches": true
+  },
+  "export_cli": {
+    "row_count": 2,
+    "first_import": {
+      "inserted": 2,
+      "duplicates": 0,
+      "revision_ids": [
+        1,
+        2
+      ],
+      "task_id": "144cae62-b2a0-4496-bff6-a39c3c797f07",
+      "environment": "synthetic"
+    },
+    "repeat_import": {
+      "inserted": 0,
+      "duplicates": 2,
+      "revision_ids": [],
+      "task_id": null,
+      "environment": "synthetic"
+    }
+  },
+  "demo_cli": {
+    "status": "passed",
+    "output": "evidence/F1_DEMO.json"
+  },
+  "original_f0_database_migration": {
+    "status": "passed",
+    "schema_history": [
+      1,
+      2
+    ],
+    "preserved_revisions": 28,
+    "preserved_runs_reproduced": 1,
+    "note": "Snapshot captured before F1 changes and migrated earlier in this implementation; preserved contents checked again here."
+  },
+  "gitignore": [
+    {
+      "path": "runtime/real/oauth-config.json",
+      "ignored": true,
+      "status": "passed"
+    },
+    {
+      "path": "runtime/real/copilot.sqlite3",
+      "ignored": true,
+      "status": "passed"
+    },
+    {
+      "path": "runtime/real/copilot.sqlite3-wal",
+      "ignored": true,
+      "status": "passed"
+    },
+    {
+      "path": "runtime/real-backups/snapshot.sqlite3",
+      "ignored": true,
+      "status": "passed"
+    },
+    {
+      "path": "runtime/real/export-mapping.json",
+      "ignored": true,
+      "status": "passed"
+    },
+    {
+      "path": ".env",
+      "ignored": true,
+      "status": "passed"
+    },
+    {
+      "path": "secrets/credential.txt",
+      "ignored": true,
+      "status": "passed"
+    },
+    {
+      "path": "tests/fixtures/whoop_api_snapshot.json",
+      "ignored": false,
+      "status": "passed"
+    },
+    {
+      "path": "tests/fixtures/export_sample.csv",
+      "ignored": false,
+      "status": "passed"
+    },
+    {
+      "path": "examples/whoop-export-mapping.example.json",
+      "ignored": false,
+      "status": "passed"
+    },
+    {
+      "path": "resources/whoop-openapi.json",
+      "ignored": false,
+      "status": "passed"
+    },
+    {
+      "path": "personal.sqlite3-wal",
+      "ignored": true,
+      "status": "passed"
+    },
+    {
+      "path": "personal.sqlite3-shm",
+      "ignored": true,
+      "status": "passed"
+    }
+  ],
+  "not_run": [
+    "real WHOOP developer app registration and callback acceptance",
+    "real OAuth authorization, refresh and revoke",
+    "real API data reconciliation",
+    "actual OS Keychain access and prompts",
+    "actual WHOOP CSV header and unit compatibility",
+    "actual Codex MCP client integration",
+    "model calls or real health-data transmission",
+    "cross-device key recovery and production disaster recovery"
+  ],
+  "not_implemented": [
+    "webhook ingestion",
+    "background scheduling",
+    "local Dashboard",
+    "cloud deployment",
+    "notifications",
+    "cross-device key migration",
+    "tracking independently copied backups"
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "date": "2026-09-07",
+  "phase": "F2.6 local recovery context",
+  "application_version": "0.3.6",
+  "scope": {
+    "view": "same physiological cycle recovery, explicitly associated sleep, and cycle strain",
+    "selection": "7/30 UTC dates by independent cycle start; 10 entries per page; linked sleep can start outside selected window",
+    "identity": "same source connection, WHOOP account, cycle_id and canonical sleep UUID; no nearest-time pairing",
+    "version_consistency": "embedded recovery cycle must match current independent cycle before combination",
+    "uuid_tombstones": "canonical UUID candidate groups include current deletion markers; duplicate alias conflicts remain unavailable for combination",
+    "metrics": "eight existing official normalized observations: recovery score, HRV, RHR, sleep performance/efficiency/consistency/respiratory rate and cycle strain",
+    "evidence": "existing source-detail route supports three additional sleep keys; original six trend choices stay bounded",
+    "journal_or_new_daily_input_required": false,
+    "new_dependencies_or_schema": false,
+    "new_scoring_or_causal_inference": false,
+    "new_network_or_background_collection": false,
+    "source_storage_change": "optional internal inclusion of current tombstones; default selection, ordering, ingestion, deletion and retention rules unchanged"
+  },
+  "official_resource_review": {
+    "documentation": "docs/WHOOP_RESOURCES.md",
+    "sources": [
+      "https://developer.whoop.com/docs/developing/user-data/recovery/",
+      "https://developer.whoop.com/docs/developing/user-data/sleep/",
+      "https://developer.whoop.com/docs/developing/user-data/cycle/",
+      "https://developer.whoop.com/docs/developing/user-data/workout/"
+    ],
+    "outcome": "reuse API identities, official scores, existing normalization and local records; no inferred next-cycle or workout-cycle relationship"
+  },
+  "automated_tests": {
+    "result": "483 passed",
+    "runtime_seconds": 4.82,
+    "new_cycle_cases": 39,
+    "previous_regression_cases": 444,
+    "data": "fabricated records, temporary stores, test keys and mocked HTTP only",
+    "coverage": [
+      "exact cycle/recovery/sleep identity and account checks; no nearby sleep fallback",
+      "cross-window associated sleep and later-nap nonreplacement",
+      "eight observation/source value-status-time projections and provided optional sleep fields",
+      "missing, pending, unscorable, calibrating and missing-metric states; nap and open-cycle markers",
+      "embedded/current cycle version mismatch, corrected pair, sleep revision and late old input",
+      "UUID case equivalence, canonical collisions and no old-alias resurrection after deletion",
+      "7/30 window bounds, 12 entries paged 10/2, empty and post-deletion page clamping",
+      "whole-read retry on source change and selective SQLCipher sleep expiry",
+      "session, origin, no-store, query whitelist/duplicates, curated fields and no new write route"
+    ]
+  },
+  "synthetic_browser": {
+    "runner": "tests/dashboard_scenarios.py",
+    "scenario_count": 6,
+    "scenarios": {
+      "short-history": "passed; latest waiting scores, earlier cycle selection, eight metric fields, optional field absence, source dialog/Escape and focus",
+      "cycles-pages": "passed; 30-day view, 10/2 paging, detail matches selected row, provided optional sleep values",
+      "cycles-mixed": "passed; open cycle, mismatched sleep association, WHOOP nap flag, cycle version mismatch and missing sleep",
+      "cycles-unavailable": "passed; 30-day failure restores 7-day selector, page, date and detail; retry recovers; failed second page preserves first page and refresh clears error",
+      "cycles-delayed": "passed; loading disables row/source controls; late response cannot overwrite weekly or overview views",
+      "empty": "passed; no cycle rows, detail/pager hidden and explicit no-records message"
+    },
+    "measured_css_viewports": [
+      [
+        984,
+        738
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "layout": "passed; mobile navigation fits/wraps, cycle row reflows and metrics remain readable; no page horizontal overflow observed",
+    "console": "normal inspected scenarios had no warnings/errors; unavailable scenario intentionally emits HTTP 400",
+    "real_dom_or_screenshots": "not_read",
+    "tool_note": "The prior preview tab was no longer available. A new synthetic preview tab was created after refreshing the browser binding; no real DOM was inspected.",
+    "cleanup": "temporary synthetic services stopped and TemporaryDirectory stores removed; viewport reset; preview returned to original local dashboard"
+  },
+  "tooling": {
+    "uv_lock_offline": "passed; application version only",
+    "uv_sync_locked": "passed",
+    "uv_lock_check_offline": "passed",
+    "ruff_check": "passed",
+    "ruff_format_check": "passed; 62 Python files",
+    "javascript_and_shell_syntax": "passed",
+    "wheel_offline_build": "passed",
+    "source_asset_parity": "passed; 31 source/assets plus fixed official OpenAPI",
+    "chart_js_hash_and_mit_license": "passed; existing vendored Chart.js reused",
+    "private_paths_excluded_from_wheel": "passed",
+    "wheel_sha256": "4c671c34a8a3e7308f578aa9179f9a22399a71d9818ad903183b7dfb3f37d178"
+  },
+  "live_local_check": {
+    "environment": "existing user-authorized SQLCipher store and project-owned Keychain configuration",
+    "version": "0.3.6",
+    "session_required": true,
+    "windows_7_and_30_contract": true,
+    "no_store": true,
+    "origin_gate": true,
+    "curated_projection": true,
+    "linked_entry_available": true,
+    "eight_metric_source_agreement": true,
+    "source_only_metrics_not_added_to_trends": true,
+    "overview_weekly_and_journal_preserved": true,
+    "connected": true,
+    "data_output": "none; only technical booleans returned",
+    "process": "local dashboard remains available at original loopback URL"
+  },
+  "not_run": [
+    "real recovery-context DOM or screenshots",
+    "new user reconciliation of cycle associations and values against WHOOP App",
+    "actual Journal export interoperability remains deferred optional work",
+    "full historical reconciliation, real revocation and disaster recovery",
+    "other browsers and full assistive-technology certification"
+  ]
+}

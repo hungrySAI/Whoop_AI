@@ -1,0 +1,33 @@
+Review date: 2026-09-05
+Execution: isolated temporary Git repositories; synthetic placeholders only.
+git version 2.47.3
+
+Original rule reproduction:
+.gitignore:8:imports/	src/whoop_copilot/imports/parser.py
+.gitignore:7:data/	src/whoop_copilot/data/models.py
+.gitignore:8:imports/	tests/fixtures/imports/sample.csv
+.gitignore:8:imports/	imports/private_export.csv
+.gitignore:7:data/	data/private.db
+
+Corrected example:
+PASS expected_ignored=False actual_ignored=False src/whoop_copilot/imports/parser.py
+PASS expected_ignored=False actual_ignored=False src/whoop_copilot/data/models.py
+PASS expected_ignored=False actual_ignored=False tests/fixtures/imports/sample.csv
+PASS expected_ignored=True actual_ignored=True imports/private_export.csv
+PASS expected_ignored=True actual_ignored=True data/private.db
+PASS expected_ignored=True actual_ignored=True private/note.txt
+PASS expected_ignored=True actual_ignored=True runtime/raw/response.json
+PASS expected_ignored=True actual_ignored=True .env
+PASS expected_ignored=True actual_ignored=True .env.local
+PASS expected_ignored=False actual_ignored=False .env.example
+PASS expected_ignored=True actual_ignored=True secrets/credential.txt
+PASS expected_ignored=True actual_ignored=True logs/run.log
+PASS expected_ignored=True actual_ignored=True backups/health.snapshot
+PASS expected_ignored=True actual_ignored=True uploads/health.csv
+PASS expected_ignored=True actual_ignored=True .codex/auth.json
+PASS expected_ignored=False actual_ignored=False examples/mcp.config.example.toml
+
+Application tests: not_run (no application code in reviewed starter).
+WHOOP live authorization / account API: not_run.
+Codex actual-client MCP connection: not_run.
+Production encryption / backup restore: not_run.

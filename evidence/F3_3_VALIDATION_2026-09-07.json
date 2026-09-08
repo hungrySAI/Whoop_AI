@@ -1,0 +1,120 @@
+{
+  "date_local": "2026-09-07",
+  "timezone": "America/Los_Angeles",
+  "batch": "F3.3",
+  "application_version": "0.4.2",
+  "schema_version": 3,
+  "resolved_review_findings": [
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "R5",
+    "R6"
+  ],
+  "additional_fixed_invariants": [
+    "correction during running recomputation keeps successor work",
+    "expired winning revision cannot reactivate predecessors"
+  ],
+  "automated_validation": {
+    "pytest": {
+      "passed": 612,
+      "seconds": 6.06,
+      "added_since_review": 54
+    },
+    "ruff_check": "passed",
+    "locked_sync": "passed; offline existing cache",
+    "offline_lock_check": "passed",
+    "dependency_versions_changed": false,
+    "wheel_build": "passed",
+    "wheel_sources_and_pinned_contract_match": true,
+    "runtime_data_excluded_from_wheel": true,
+    "synthetic_sigkill_and_recovery_drill": "passed; page/ingest crash windows, resume, idempotency, lock release, 45-day catch-up, cleanup",
+    "schema_1_to_3": "passed",
+    "schema_2_to_3_synthetic_and_sqlcipher": "passed",
+    "schema_2_backup_restore_synthetic_and_sqlcipher": "passed"
+  },
+  "synthetic_benchmark": {
+    "page_reads": 1000,
+    "page_read_seconds": 1.8163794169995526,
+    "analysis_rows_added": 0,
+    "analysis_text_bytes_added": 0,
+    "tasks_added": 0,
+    "extra_history_versions": [
+      0,
+      10000,
+      100000,
+      200000
+    ],
+    "overview_median_seconds": [
+      0.0019087910004600417,
+      0.0021213330001046415,
+      0.004755874999318621,
+      0.008425957999861566
+    ],
+    "python_peak_allocation_bytes_max": 225088,
+    "selected_current_recovery_rows_each_case": 28,
+    "selected_window_records_each_case": 28,
+    "current_identity_index_used": true,
+    "observation_revision_index_used": true,
+    "temporary_databases_removed": true,
+    "limitation": "Fabricated SQLite structural benchmark, not a real SQLCipher latency forecast"
+  },
+  "local_upgrade": {
+    "old_service_stopped": true,
+    "isolated_encrypted_migration_passed": true,
+    "isolated_copy_backup_ownership_cleared": true,
+    "actual_schema": 3,
+    "business_table_signatures_match_isolated_migration": true,
+    "integrity_and_foreign_keys_passed": true,
+    "temporary_encrypted_copy_removed": true,
+    "existing_project_keychain_used": true,
+    "credentials_unchanged": true,
+    "service_started": true,
+    "browser_opened": true,
+    "loopback_http_dashboard_7_30_weekly_cycles_7_30_passed": true,
+    "dashboard_transient_analysis_verified": true,
+    "existing_connection_available": true,
+    "real_health_content_exposed_to_model": false,
+    "real_database_locally_processed_for_migration_and_validation": true,
+    "real_screenshots_or_dom_read": false
+  },
+  "remaining_boundaries": {
+    "historical_rotating_reconciliation": "not_implemented",
+    "upstream_deletion_event_propagation": "not_implemented",
+    "complete_real_history_reconciliation": "not_run",
+    "real_multiyear_performance": "not_run",
+    "cross_device_disaster_recovery": "not_run"
+  },
+  "lifecycle_note": "When a winning revision expires, its same-identity predecessors may be cleared before their individual maximum retention deadline to prevent rollback; no retention is extended.",
+  "source_sha256": {
+    "src/whoop_copilot/__init__.py": "f49605b5369d150ab445553a10253f6cecbc7e56197b5c167189ac0fc316ff63",
+    "src/whoop_copilot/adapters.py": "ddeeed94457558d8469b063deec776a8ed19797a8fd040e8d5d75bdda0cff4a0",
+    "src/whoop_copilot/analytics.py": "96a034820338d58ed780f411b9938dcf0fa687866ba76a6a3c17889deba7e3d4",
+    "src/whoop_copilot/api_ingestion.py": "b60852c5171335424d890951052a30d1e4a9bd9a5ff1e255a67a40d5c1a3f21b",
+    "src/whoop_copilot/briefing.py": "53d3f25a137a6c34a1fad313e03ac702b14baf4923ee0f7e28284f839cfce9b3",
+    "src/whoop_copilot/cli.py": "67e04d6dae7d6d0356046d85df06b40fd05b387c09a292b3106adeb9f30a11ea",
+    "src/whoop_copilot/commands.py": "8c84440e2d17ee55db373da57ad596c8d13b433ad1e8d1d7a6e9d3d3905bbdee",
+    "src/whoop_copilot/contracts.py": "b9494a0a0398cfbed366e33ddf3b65682b1891983a8434c67a550fb47e85a2df",
+    "src/whoop_copilot/credentials.py": "dcfbf175498f0692c1b4b1c950ffb5b97d96b755f4c2d8e144840bf158787692",
+    "src/whoop_copilot/cycles.py": "f118282c54ce7dcffaf88d6cbb0a92050ea7dd9bc1d60955d377cbd04e9151bf",
+    "src/whoop_copilot/dashboard.py": "559a50299cac4f7cc7c0f5d14661b55e64c3026f91e3bf8986de4fae03aa7949",
+    "src/whoop_copilot/dashboard_demo.py": "79f06060eff5d19bd23f1e9ccc33b362a19c8dd1ac85bc67b08daaf5ac7b0ad3",
+    "src/whoop_copilot/exports.py": "733994dc1ef6a90f99cb7e7c4dbb0347ec0f473ca70fae97cb5afae1ed3c96f2",
+    "src/whoop_copilot/identity.py": "d2e7b1c07c94180ddec102e1fccffed69412cc8a14e2d8692e77869aa89af941",
+    "src/whoop_copilot/journal.py": "acb251e3ba0a52e3694fdf2365653e72d65679d949c9081431a516a527c1f9eb",
+    "src/whoop_copilot/launcher.py": "258c12fdc0997321f0320f266a45154b982763e53595d514bfaa3d579d2f6708",
+    "src/whoop_copilot/live_cli.py": "9dcd7bea148cda8dedd4fdbc97cef8927a5196c1053ff73a71acc3aff4ed8bec",
+    "src/whoop_copilot/mcp_server.py": "e701bcb2aa1fee8e5aa8fc3729bb709b0e71e00eb5f2bfadda1cd4b633befc9d",
+    "src/whoop_copilot/oauth.py": "db11c449b10c1bfb0ab3a6e5d0e2dca2f62cf265b06adccc0fa24623eaf47c92",
+    "src/whoop_copilot/protection.py": "ff48385ab174f2cf4e14c8bc903782ef5eca02667046ae84a0e443409bfb296d",
+    "src/whoop_copilot/service.py": "b2450c08e370205ae994b5dfef83ebbad4344b000a46f43c2c39b10ca3dfa32b",
+    "src/whoop_copilot/storage.py": "efe96a7f63e073f0eac0cbfc3d9cbb3fe30d21e96aaebb5125d308c4acce9133",
+    "src/whoop_copilot/sync.py": "1a2011844c4eff357ad023653a711c1f36fe8e183bfb3fffc29194f0fb76e786",
+    "src/whoop_copilot/web.py": "6ac368c23a0d6859def6218f25b2dc96ba0d1e5a2f3971439474f043197cbe66",
+    "src/whoop_copilot/weekly.py": "e7886664551f0860192c926dda45d68edeaba41f21d91381d39243b00060b6b8",
+    "src/whoop_copilot/whoop_client.py": "7df9e481f38b10a26f763f38e776b0e246182fe3ca5c2e0f5f2c6a4696d218d2",
+    "pyproject.toml": "3e7dcfc3ad219b05797a7640d568cd34736f00228597b382cb5e2e859a45904c",
+    "uv.lock": "5a317e1db838c5bc2cbd90e4b11bf96856c4771d0913c4fc71442e25e9e2d141"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "description": "Generic stdio launch parameters; replace absolute paths for your MCP client.",
+  "command": "/absolute/path/to/whoop/.venv/bin/python",
+  "args": [
+    "-m",
+    "whoop_copilot.mcp_server",
+    "--db",
+    "/absolute/path/to/whoop/runtime/synthetic/copilot.sqlite3"
+  ]
+}

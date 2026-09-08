@@ -1,0 +1,163 @@
+{
+  "archive": "WHOOP_Codex_Project_Starter_2026-09-05.zip",
+  "sha256": "d2e8b4d42eb1967400bbec132c118ac4a71c279f90ee2012a7b7f766ae1d5e17",
+  "files": [
+    {
+      "path": ".gitignore",
+      "lines": 35,
+      "bytes": 531,
+      "sha256": "e408316cddd09d13ecc63a225c0d840e3dcb36d2c565242293b1398091858e3a"
+    },
+    {
+      "path": "AGENTS.md",
+      "lines": 52,
+      "bytes": 4733,
+      "sha256": "e18faf351c539e9155af93ed1b6f67481de76bfd5b467dc23f958877de879e52"
+    },
+    {
+      "path": "PROJECT_CHARTER.md",
+      "lines": 49,
+      "bytes": 3732,
+      "sha256": "7750499aa0e7a1f16df103ebe313e7d54eb3d8bf2d5ce44bb71e86a83eaa81e7"
+    },
+    {
+      "path": "README.md",
+      "lines": 62,
+      "bytes": 4486,
+      "sha256": "b402f2d45b6a0e16d1917e32a670c888c74a99ba3a295a885b276ebdd4d981ec"
+    },
+    {
+      "path": "ROADMAP.md",
+      "lines": 35,
+      "bytes": 3082,
+      "sha256": "81cc1df9988bf14125cb6044d226b79552f301d4a161aaca309c048e910d21ab"
+    },
+    {
+      "path": "STATUS.md",
+      "lines": 46,
+      "bytes": 1768,
+      "sha256": "a9fe449f7ae44ccbeaea55c0b41c1747ba8fa17cf64de4982ef41002b62549f5"
+    },
+    {
+      "path": "docs/ACCEPTANCE_TESTS.md",
+      "lines": 88,
+      "bytes": 5507,
+      "sha256": "9686712b89d25260ad3ac9e85d45c582079a92dec5525fcc53265d2139045a46"
+    },
+    {
+      "path": "docs/ANALYTICS_SPEC.md",
+      "lines": 57,
+      "bytes": 4564,
+      "sha256": "ceae554cecefcd68b178959fe770258f7df7fdc9108db40d311df4a4dc3cd2e3"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "lines": 82,
+      "bytes": 5403,
+      "sha256": "16a9553cbd4a25059d6be44ca17926f517280f63f19155b9e583dfe6364e6ee2"
+    },
+    {
+      "path": "docs/CAPABILITY_MATRIX.md",
+      "lines": 50,
+      "bytes": 4387,
+      "sha256": "04b706722547f3ab3a0aaceb1f1eb48cdd61fd365e1c130c2e963a69e8c403b5"
+    },
+    {
+      "path": "docs/COACH_SPEC.md",
+      "lines": 66,
+      "bytes": 5039,
+      "sha256": "5a436d7110e868bf6c0fcc4f9e1646e46d2f260afad8fbb54c74b7ec5215fc18"
+    },
+    {
+      "path": "docs/DATA_CONTRACTS.md",
+      "lines": 86,
+      "bytes": 7098,
+      "sha256": "c027f36d5e0c78870f93c2b975ffbc0228be8647da96462114898533ac76f9d5"
+    },
+    {
+      "path": "docs/DECISIONS.md",
+      "lines": 21,
+      "bytes": 968,
+      "sha256": "388c3890a4b5a8c838064099a88c83e0f6895d44cac164309688696910dde975"
+    },
+    {
+      "path": "docs/SECURITY_PRIVACY.md",
+      "lines": 56,
+      "bytes": 4178,
+      "sha256": "9e45274f4ce7c9ce50f6b9600b7dfe8a778f1e678ea4dabb0e9ab2767892d130"
+    },
+    {
+      "path": "docs/SOURCES.md",
+      "lines": 36,
+      "bytes": 4068,
+      "sha256": "2ab8dae7a2d865a3587cb29e9db85a1bfa00fa952284d219f6e1f7cf7ef307a0"
+    },
+    {
+      "path": "examples/config.example.json",
+      "lines": 60,
+      "bytes": 1667,
+      "sha256": "9c1bc4a56060bb865ac1139a99c8c08a7cbf51f35ff0d021370b143d3695869e"
+    },
+    {
+      "path": "prompts/00_BOOTSTRAP.md",
+      "lines": 83,
+      "bytes": 6980,
+      "sha256": "6a43508a53a1b7aa287378ac2316b785aa72bdf69fc6714a89476f1beb274f35"
+    },
+    {
+      "path": "prompts/01_SYNC.md",
+      "lines": 39,
+      "bytes": 2609,
+      "sha256": "cb6a2f337bf42a2c6da7897ca8a6d7262e9627308c7ace75c52a59e50ad437b0"
+    },
+    {
+      "path": "prompts/02_ANALYTICS_IMPORTS.md",
+      "lines": 25,
+      "bytes": 1892,
+      "sha256": "8f327ad8b4e9eafd29ec038ee35dfe41f1680fd5e1a8bd6cc271023b221722c4"
+    },
+    {
+      "path": "prompts/03_DASHBOARD.md",
+      "lines": 35,
+      "bytes": 2320,
+      "sha256": "6bfbea267bbc176d62197e4b3a090e52746412427a8d30e5bc7677bcc02fca4f"
+    },
+    {
+      "path": "prompts/04_COACH_MCP.md",
+      "lines": 37,
+      "bytes": 2925,
+      "sha256": "859407ab43e72b3790a3dbdc08602293efbd818462368725a7bf07f125ee6428"
+    },
+    {
+      "path": "prompts/05_HARDEN_DEPLOY.md",
+      "lines": 33,
+      "bytes": 2508,
+      "sha256": "e012a8d3d4996b9a6d68f121ec09c90a23f9c8cec0dfb28ff0ab7d5230d7b087"
+    },
+    {
+      "path": "prompts/06_REVIEW.md",
+      "lines": 19,
+      "bytes": 1644,
+      "sha256": "41728f0762aaf754999309876224dd98d2ebe4f9dde88b4a312d8d2af713b116"
+    },
+    {
+      "path": "prompts/07_RESUME.md",
+      "lines": 13,
+      "bytes": 966,
+      "sha256": "6fa6e76b6876763fd7fe6b52058c67d1ef7c54d64859879e83008173e706de22"
+    },
+    {
+      "path": "prompts/08_BUGFIX.md",
+      "lines": 13,
+      "bytes": 1185,
+      "sha256": "3d3b14d8d1536acba74b897caa6f76a50914c6835ac4da6389e65743f8ab2224"
+    },
+    {
+      "path": "runtime_prompts/COACH_SYSTEM.md",
+      "lines": 51,
+      "bytes": 3873,
+      "sha256": "569f9163ab737f77b5ae23c594c0aa968e1e969e7d53b470b95993b7f23f3f88"
+    }
+  ],
+  "gitignore_reproduction": ".gitignore:8:imports/\tsrc/whoop_copilot/imports/parser.py\n.gitignore:7:data/\tsrc/whoop_copilot/data/models.py\n.gitignore:8:imports/\ttests/fixtures/imports/sample.csv\n.gitignore:8:imports/\timports/private_export.csv\n.gitignore:7:data/\tdata/private.db\n"
+}

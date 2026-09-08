@@ -1,0 +1,183 @@
+{
+  "date": "2026-09-07",
+  "phase": "F3.2 first-version acceptance and isolated local restore drill",
+  "application_version": "0.4.1",
+  "fix": {
+    "problem": "restored database inherited source-owned managed backup paths",
+    "change": "clear managed_backups on restored current-schema target, then verify target integrity",
+    "new_regressions": 2,
+    "original_rows_and_expiry": "preserved; restored inventory starts empty",
+    "schema_or_dependencies_changed": false
+  },
+  "automated_tests": {
+    "result": "558 passed",
+    "seconds": 5.6,
+    "data": "synthetic fixtures and test credentials only"
+  },
+  "quality": {
+    "ruff_check": "passed",
+    "ruff_format_check": "passed;66Pythonfiles",
+    "node_syntax_and_6_renderer_scenarios": "passed",
+    "shell_syntax": "passed",
+    "uv_locked_install": "passed",
+    "uv_lock_check": "passed",
+    "wheel": "passed",
+    "source_asset_parity": true,
+    "source_assets": 32,
+    "private_paths_excluded": true,
+    "openapi_parity": true,
+    "sha256": "80bdc6b4665e968a30ec541a0f84537ede161c13eebfee26a171926cd55746dc"
+  },
+  "user_reconciliation": {
+    "result": "user_reported_consistent",
+    "scope": "cycle/sleep associations and sampled weekly source dates/original values",
+    "full_historical_reconciliation": false,
+    "health_content_received": false
+  },
+  "finder_startup": {
+    "actual_stop_double_click": "passed; service exited",
+    "actual_open_double_click": "passed; verified ownservice ready and connected",
+    "independent_process_session": true,
+    "terminal_window_close_gesture": "not_run; Terminal UI control unavailable",
+    "real_service_left_running": true
+  },
+  "synthetic_browser": {
+    "scenarios": [
+      "catchup-failure",
+      "catchup-limited"
+    ],
+    "scenario_requests_each": 2,
+    "flows": [
+      "conditional initial sync",
+      "refresh leaves unfinished checkpoint",
+      "windowchange preserves original range",
+      "explicitresume succeeds",
+      "source dialog/Escape",
+      "cycle selection",
+      "currentweek progress and source records",
+      "oldweek selection",
+      "optionalJournal empty",
+      "366daycrossyear limit",
+      "manual new sync succeeds"
+    ],
+    "viewports": [
+      [
+        1280,
+        720
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "page_overflow": false,
+    "console_warnings_errors": false,
+    "tools_note": "short toolwait expired before deliberately delayed mock completed; subsequent DOM verified success, no duplicate sync was triggered",
+    "cleanup": "tabclosed,viewportreset,servicesstopped,tempstoresremoved",
+    "real_dom_or_screenshots": "not_read"
+  },
+  "synthetic_process_recovery": {
+    "all_child_processes_reaped": true,
+    "external_network_not_used": true,
+    "sigkill_after_ingest": {
+      "actual_sigkill_received": true,
+      "catchup_used_request_end_not_late_completion": true,
+      "checkpoint_survived_process_death": true,
+      "completed_replay_idempotent": true,
+      "conditional_open_did_not_retry": true,
+      "cursor_resumed_without_restarting_pages": true,
+      "explicit_resume_completed": true,
+      "later_process_open_bridged_45_day_absence": true,
+      "old_completion_not_current_freshness": true,
+      "original_window_and_catchup_plan_preserved": true,
+      "overlap_calendar_window_preserved": true,
+      "repeated_open_skipped_when_fresh": true,
+      "same_provider_version_replay_did_not_duplicate": true,
+      "shared_service_conditional_gate_did_not_retry": true,
+      "staging_or_durable_ingestion_state_correct": true,
+      "store_integrity_ok": true,
+      "store_integrity_ok_after_catchup": true,
+      "sync_lock_released_on_process_death": true,
+      "timestamp_free_profile_body_retained_new_retrieval_snapshots": true
+    },
+    "sigkill_after_page": {
+      "actual_sigkill_received": true,
+      "catchup_used_request_end_not_late_completion": true,
+      "checkpoint_survived_process_death": true,
+      "completed_replay_idempotent": true,
+      "conditional_open_did_not_retry": true,
+      "cursor_resumed_without_restarting_pages": true,
+      "explicit_resume_completed": true,
+      "later_process_open_bridged_45_day_absence": true,
+      "old_completion_not_current_freshness": true,
+      "original_window_and_catchup_plan_preserved": true,
+      "overlap_calendar_window_preserved": true,
+      "repeated_open_skipped_when_fresh": true,
+      "same_provider_version_replay_did_not_duplicate": true,
+      "shared_service_conditional_gate_did_not_retry": true,
+      "staging_or_durable_ingestion_state_correct": true,
+      "store_integrity_ok": true,
+      "store_integrity_ok_after_catchup": true,
+      "sync_lock_released_on_process_death": true,
+      "timestamp_free_profile_body_retained_new_retrieval_snapshots": true
+    },
+    "synthetic_fixture_only": true,
+    "temporary_stores_removed": true
+  },
+  "live_isolated_restore": {
+    "checks": {
+      "all_application_tables_preserved": true,
+      "application_tables_still_match_after_views": true,
+      "backup_integrity": true,
+      "backup_plaintext_sqlite_rejected": true,
+      "backup_uses_distinct_key": true,
+      "cleanup_completed": true,
+      "clone_backup_cleaned": true,
+      "clone_manages_only_its_new_backup": true,
+      "clone_source_removed": true,
+      "cycles_views_match_restored": true,
+      "dashboard_views_match_restored": true,
+      "database_and_backup_permissions_private": true,
+      "drill_directory_private": true,
+      "encrypted_file_headers": true,
+      "expired_restore_rejected_before_target_creation": true,
+      "known_source_regular_file": true,
+      "original_application_rows_unchanged_after_cleanup": true,
+      "original_application_rows_unchanged_by_clone": true,
+      "original_backup_inventory_restored_after_cleanup": true,
+      "original_drill_backup_unchanged": true,
+      "original_inventory_unchanged_by_clone": true,
+      "original_keychain_key_preserved": true,
+      "prior_managed_backups_unchanged_by_clone": true,
+      "private_drill_files_removed": true,
+      "restore_integrity_result": true,
+      "restore_plaintext_sqlite_rejected": true,
+      "restore_uses_distinct_key": true,
+      "restored_foreign_keys": true,
+      "restored_integrity": true,
+      "restored_inventory_starts_empty": true,
+      "restored_sqlcipher_active": true,
+      "source_expiry_and_known_times_preserved": true,
+      "source_foreign_keys": true,
+      "source_integrity": true,
+      "temporary_keychain_entries_removed": true,
+      "weekly_views_match_restored": true
+    },
+    "passed": true
+  },
+  "privacy": {
+    "data": "health rows/views/backup bytes remained only in local encrypted files or processmemory",
+    "outputs": "technical booleans only; no health counts, values, actualdates, identifiers, hashes or secrets",
+    "temporary_real_data_and_keys": "removed"
+  },
+  "not_run": [
+    "wholeMacshutdown/reboot",
+    "closingTerminalwindowgesture",
+    "crossdevicekeyrecovery",
+    "actualmonths-offhistoryreconciliation",
+    "fulloldcorrection/deletionreconciliation",
+    "productiondisasterrecovery",
+    "realrevocation",
+    "optionalJournalexport remainsdeferred"
+  ]
+}

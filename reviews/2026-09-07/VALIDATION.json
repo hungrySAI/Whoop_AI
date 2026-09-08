@@ -1,0 +1,64 @@
+{
+  "review_date_local": "2026-09-07",
+  "timezone": "America/Los_Angeles",
+  "scope": "Independent source and fabricated-data robustness review of workspace version 0.4.1",
+  "real_user_data_read": false,
+  "personal_api_called": false,
+  "keychain_read": false,
+  "production_source_changed": false,
+  "validation": {
+    "locked_dependency_sync": "passed; temporary UV cache",
+    "existing_pytest_suite": {
+      "passed": 558,
+      "seconds": 5.08
+    },
+    "review_diagnostic_probes": {
+      "passed": 10,
+      "seconds": 0.21,
+      "meaning": "Assertions reproduce observed weaknesses; not evidence of fixes"
+    },
+    "ruff": "passed",
+    "synthetic_process_recovery_drill": "passed; SIGKILL after paging and ingestion, resume, 45-day catch-up, temporary cleanup",
+    "real_account_reconciliation": "not_run",
+    "real_multiyear_load_test": "not_run",
+    "upstream_deletion_and_correction_live_test": "not_run",
+    "production_fixes": "not_implemented_in_review"
+  },
+  "findings": {
+    "R1": "P1 expiry/dedup race",
+    "R2": "P1 analysis evidence recreated after deletion",
+    "R3": "P2 UUID identity spelling",
+    "R4": "P2 future request checkpoint",
+    "R5": "P2 cache/task growth",
+    "R6": "P2 historical scan cost"
+  },
+  "source_sha256": {
+    "src/whoop_copilot/__init__.py": "377c5683e438bd1f22c652dbfa35e61b06055022fabf0b2b06a86f7bbd971e63",
+    "src/whoop_copilot/adapters.py": "ddeeed94457558d8469b063deec776a8ed19797a8fd040e8d5d75bdda0cff4a0",
+    "src/whoop_copilot/analytics.py": "96a034820338d58ed780f411b9938dcf0fa687866ba76a6a3c17889deba7e3d4",
+    "src/whoop_copilot/api_ingestion.py": "318d0b493b3c537b96eeedd4399d8110506b5780418e3846c5f6a8df23cba623",
+    "src/whoop_copilot/briefing.py": "53d3f25a137a6c34a1fad313e03ac702b14baf4923ee0f7e28284f839cfce9b3",
+    "src/whoop_copilot/cli.py": "67e04d6dae7d6d0356046d85df06b40fd05b387c09a292b3106adeb9f30a11ea",
+    "src/whoop_copilot/commands.py": "8c84440e2d17ee55db373da57ad596c8d13b433ad1e8d1d7a6e9d3d3905bbdee",
+    "src/whoop_copilot/contracts.py": "b9494a0a0398cfbed366e33ddf3b65682b1891983a8434c67a550fb47e85a2df",
+    "src/whoop_copilot/credentials.py": "dcfbf175498f0692c1b4b1c950ffb5b97d96b755f4c2d8e144840bf158787692",
+    "src/whoop_copilot/cycles.py": "f118282c54ce7dcffaf88d6cbb0a92050ea7dd9bc1d60955d377cbd04e9151bf",
+    "src/whoop_copilot/dashboard.py": "a45d27150ce2d5a262ce5c6dbb4df5eea502fe9a72c0cde7ed0ba3ffa8698202",
+    "src/whoop_copilot/dashboard_demo.py": "79f06060eff5d19bd23f1e9ccc33b362a19c8dd1ac85bc67b08daaf5ac7b0ad3",
+    "src/whoop_copilot/exports.py": "733994dc1ef6a90f99cb7e7c4dbb0347ec0f473ca70fae97cb5afae1ed3c96f2",
+    "src/whoop_copilot/journal.py": "acb251e3ba0a52e3694fdf2365653e72d65679d949c9081431a516a527c1f9eb",
+    "src/whoop_copilot/launcher.py": "258c12fdc0997321f0320f266a45154b982763e53595d514bfaa3d579d2f6708",
+    "src/whoop_copilot/live_cli.py": "9dcd7bea148cda8dedd4fdbc97cef8927a5196c1053ff73a71acc3aff4ed8bec",
+    "src/whoop_copilot/mcp_server.py": "e701bcb2aa1fee8e5aa8fc3729bb709b0e71e00eb5f2bfadda1cd4b633befc9d",
+    "src/whoop_copilot/oauth.py": "db11c449b10c1bfb0ab3a6e5d0e2dca2f62cf265b06adccc0fa24623eaf47c92",
+    "src/whoop_copilot/protection.py": "ff48385ab174f2cf4e14c8bc903782ef5eca02667046ae84a0e443409bfb296d",
+    "src/whoop_copilot/service.py": "62138b2ff156abb8a67fa1b7d9fbd282a0ff29dd6194ca8bc39d666a3bef0766",
+    "src/whoop_copilot/storage.py": "e46a93993217e3735311fe345d51400d7750c36da1126665dc14f4e9441cc755",
+    "src/whoop_copilot/sync.py": "758ec8e2c168cbadabab1d9211454bf727f3afbbfb912af6e55d823bcb866771",
+    "src/whoop_copilot/web.py": "6ac368c23a0d6859def6218f25b2dc96ba0d1e5a2f3971439474f043197cbe66",
+    "src/whoop_copilot/weekly.py": "e7886664551f0860192c926dda45d68edeaba41f21d91381d39243b00060b6b8",
+    "src/whoop_copilot/whoop_client.py": "7df9e481f38b10a26f763f38e776b0e246182fe3ca5c2e0f5f2c6a4696d218d2",
+    "pyproject.toml": "53cf1cf28789aeaaca06fc07782369ba24de28a5b49ca937efeaa38e7113a9b9",
+    "uv.lock": "87b3d017286015588ca5d5eea7e41ee5a6ac66f5104d0e9f6049f008fd863dd3"
+  }
+}

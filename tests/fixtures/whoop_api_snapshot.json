@@ -1,0 +1,116 @@
+{
+  "synthetic": true,
+  "resources": {
+    "cycle": [
+      {
+        "id": 900001,
+        "user_id": 999999,
+        "created_at": "2026-08-01T06:00:00-07:00",
+        "updated_at": "2026-08-02T06:15:00-07:00",
+        "start": "2026-08-01T06:00:00-07:00",
+        "end": "2026-08-02T06:00:00-07:00",
+        "timezone_offset": "-07:00",
+        "score_state": "SCORED",
+        "score": {
+          "strain": 8.0,
+          "kilojoule": 1500.0,
+          "average_heart_rate": 68,
+          "max_heart_rate": 142
+        }
+      }
+    ],
+    "recovery": [
+      {
+        "cycle_id": 900001,
+        "sleep_id": "00000000-0000-0000-0000-0000000003e9",
+        "user_id": 999999,
+        "created_at": "2026-08-01T06:00:00-07:00",
+        "updated_at": "2026-08-01T06:10:00-07:00",
+        "score_state": "SCORED",
+        "score": {
+          "user_calibrating": false,
+          "recovery_score": 60.0,
+          "resting_heart_rate": 62.0,
+          "hrv_rmssd_milli": 40.0,
+          "spo2_percentage": 97.5,
+          "skin_temp_celsius": 33.2
+        }
+      }
+    ],
+    "sleep": [
+      {
+        "id": "00000000-0000-0000-0000-0000000003e9",
+        "cycle_id": 900001,
+        "user_id": 999999,
+        "created_at": "2026-08-01T13:00:00Z",
+        "updated_at": "2026-08-01T14:00:00Z",
+        "start": "2026-08-01T05:00:00Z",
+        "end": "2026-08-01T12:00:00Z",
+        "timezone_offset": "Z",
+        "nap": false,
+        "score_state": "SCORED",
+        "score": {
+          "stage_summary": {
+            "total_in_bed_time_milli": 30272735,
+            "total_awake_time_milli": 1403507,
+            "total_no_data_time_milli": 0,
+            "total_light_sleep_time_milli": 14905851,
+            "total_slow_wave_sleep_time_milli": 6630370,
+            "total_rem_sleep_time_milli": 5879573,
+            "sleep_cycle_count": 3,
+            "disturbance_count": 12
+          },
+          "sleep_needed": {
+            "baseline_milli": 27395716,
+            "need_from_sleep_debt_milli": 352230,
+            "need_from_recent_strain_milli": 208595,
+            "need_from_recent_nap_milli": -12312
+          }
+        }
+      }
+    ],
+    "workout": [
+      {
+        "id": "ecfc6a15-4661-442f-a9a4-f160dd7afae8",
+        "user_id": 999999,
+        "created_at": "2026-08-01T13:00:00Z",
+        "updated_at": "2026-08-01T14:00:00Z",
+        "start": "2026-08-01T05:00:00Z",
+        "end": "2026-08-01T12:00:00Z",
+        "timezone_offset": "Z",
+        "sport_name": "running",
+        "score_state": "SCORED",
+        "score": {
+          "strain": 8.2463,
+          "average_heart_rate": 123,
+          "max_heart_rate": 146,
+          "kilojoule": 1569.34033203125,
+          "percent_recorded": 100.0,
+          "zone_durations": {
+            "zone_zero_milli": 300000,
+            "zone_one_milli": 600000,
+            "zone_two_milli": 900000,
+            "zone_three_milli": 900000,
+            "zone_four_milli": 600000,
+            "zone_five_milli": 300000
+          }
+        }
+      }
+    ],
+    "profile": [
+      {
+        "user_id": 999999,
+        "email": "fixture@example.invalid",
+        "first_name": "Synthetic",
+        "last_name": "Fixture"
+      }
+    ],
+    "body": [
+      {
+        "height_meter": 1.8288,
+        "weight_kilogram": 90.7185,
+        "max_heart_rate": 200
+      }
+    ]
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "date": "2026-09-07",
+  "phase": "F3.1 on-demand startup and bounded catch-up",
+  "application_version": "0.4.0",
+  "scope": {
+    "scheduled_sync": "deferred; no login item, scheduler, cloud or webhook",
+    "startup": "user-invoked existing local Python service; verified reuse and signed graceful stop",
+    "real_launcher_signing_key": "separate project-scoped OS Keychain entry; no plaintext fallback",
+    "catch_up": "merge retained successful query intervals through first gap; fixed query ending now, overlap7 UTC dates including checkpoint date",
+    "lookback_limit_days": 366,
+    "no_completed_checkpoint": "bounded366dayrescan, including expiration; earlier history unverified",
+    "retention": "existing capture-based lifetime unchanged; no new table",
+    "resume": "explicit only, original request unchanged",
+    "batch_pages": 100,
+    "batch_record_limit": 10000
+  },
+  "automated_tests": {
+    "result": "556 passed",
+    "seconds": 4.95,
+    "new_catch_up_cases": 43,
+    "new_launcher_cases": 30,
+    "previous_regressions": 483,
+    "data": "synthetic records/test clocks/mock credentials only"
+  },
+  "synthetic_lifecycle": {
+    "actual_detached_subprocess_start_reuse_stop_repeat_stop": "passed",
+    "cleanup": "temporary server and files removed"
+  },
+  "status_renderer": {
+    "command": "node tests/check_dashboard_sync_ui.cjs",
+    "scenarios": 6,
+    "result": "passed",
+    "browser_or_network": "not used"
+  },
+  "checks": {
+    "uv_sync_locked_offline": "passed",
+    "uv_lock_check_offline": "passed",
+    "ruff_check": "passed",
+    "ruff_format_check": "passed;65Pythonfiles",
+    "js_shell_syntax": "passed",
+    "wheel_offline_build": "passed",
+    "source_asset_parity": true,
+    "source_assets": 32,
+    "openapi_parity": true,
+    "private_paths_excluded": true,
+    "sha256": "c99cc6bbf5a62bf59251eabc15d35b366de16a553b1a3899ea657966214ade41"
+  },
+  "live_local_check": {
+    "repeat_reuses_service": true,
+    "real_launcher_key_not_in_file": true,
+    "session_required": true,
+    "connected": true,
+    "no_store": true,
+    "origin_gate": true,
+    "csrf_gate": true,
+    "bounded_plans": true,
+    "two_view_plans": true,
+    "conditional_request_accepted_or_fresh": true,
+    "sync_idle": true,
+    "last_run_completed": true,
+    "new_sync_plan_persisted": true,
+    "fresh_after_sync": true,
+    "new_ui_assets": true,
+    "version_0_4_0": true,
+    "real_graceful_stop": true,
+    "real_repeat_stop": true,
+    "real_restart": true,
+    "data_output": "technical booleans only; no health data, request dates, identities or credentials",
+    "process": "detached local service restarted and available on original127.0.0.1:8766"
+  },
+  "official_resource_review": {
+    "sources": [
+      "https://developer.whoop.com/api/",
+      "https://developer.whoop.com/docs/developing/pagination/"
+    ],
+    "result": "reuse existing v2 date filters/pagination/OAuth/cycle associations; not updated_since, absence is not deletion"
+  },
+  "not_run": [
+    "Finder double-click gesture",
+    "new browser interaction or visual QA",
+    "real DOM or screenshots",
+    "actual months-off historical reconciliation",
+    "full old correction/deletion reconciliation",
+    "real revocation/disaster recovery",
+    "optional Journal export remains deferred"
+  ]
+}

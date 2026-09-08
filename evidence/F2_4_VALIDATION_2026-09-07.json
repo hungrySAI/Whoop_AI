@@ -1,0 +1,96 @@
+{
+  "phase": "F2.4 local daily brief and recent changes",
+  "date": "2026-09-07",
+  "application_version": "0.3.4",
+  "scope": "user-approved local summary from existing official API metrics; no Journal requirement or extra daily input",
+  "implementation": {
+    "reused": ["DashboardService official cards", "registered mean_change/1", "analysis IDs and existing source detail", "same catalog retry", "SQLCipher and on-open conditional sync"],
+    "added_projection": "briefing in existing GET /api/dashboard response",
+    "new_schema_dependencies_endpoints": false,
+    "new_scores_or_health_algorithms": false,
+    "journal_required": false,
+    "model_transmission": false,
+    "new_scheduler_or_report_archive": false,
+    "comparison_gate": "both equal-duration window halves require at least two valid observations; insufficient difference is projected as null",
+    "latest_semantics": "independent UTC start dates; pending stays pending; sleep may include naps; unfinished cycle retains current official load and is labelled",
+    "snapshot": "brief, cards and trend use the same source catalog; final expiry purge and catalog check retry the entire read"
+  },
+  "automated_tests": {
+    "command": "uv run pytest -q",
+    "passed": 407,
+    "failed": 0,
+    "elapsed_seconds": 3.88,
+    "previous_regressions": 382,
+    "new_cases": 25,
+    "data": "fabricated API fixtures, temporary stores and test keys only",
+    "covered": [
+      "three metrics times two windows share original registered results and reproducible analysis IDs",
+      "short history with empty earlier half does not fabricate comparison",
+      "one observation in each half does not qualify despite a non-null raw algorithm difference",
+      "latest pending, unscorable, calibrating and missing metric states never fall back to old values",
+      "different metric dates, absent today and entirely empty window",
+      "open or future-ended cycle is not labelled final daily load",
+      "sleep including a nap is not labelled last night's primary sleep",
+      "neutral higher/lower/equal language and nonzero differences below display precision",
+      "source correction during read keeps summary and cards on current revisions",
+      "expiry after final metric read triggers whole-summary retry",
+      "existing HTTP session and no-store with curated fields only"
+    ]
+  },
+  "browser_acceptance": {
+    "browser": "Codex in-app browser",
+    "environment": "temporary synthetic stores on loopback port 8767; simulated clients only; no Keychain or WHOOP calls",
+    "scenarios": {
+      "short-history": "passed; latest pending remains visible alongside eligible past comparison; 30-day insufficient halves; metric-specific navigation and keyboard focus; provenance and Escape; Journal remains optional",
+      "brief-open-cycle": "passed; unfinished cycle context displayed with existing official value",
+      "brief-history": "passed; no-today headline and historical labels for all three metrics",
+      "brief-mixed": "passed; one today and two earlier records each retain their own date",
+      "brief-small-change": "passed; summary and detailed trend show less than 0.1 instead of zero",
+      "empty": "passed; no fabricated scores, differences or source links",
+      "window-unavailable": "passed; overview 7 days to Journal 30 days then failed overview 30 days restores cached 7-day summary, selection, date range and freshness; successful retry clears error",
+      "stale-failure": "passed; failed on-open sync preserves brief, page reload does not retry, explicit resume completes and clears error; exactly two simulated client attempts overall"
+    },
+    "visual_checks": {
+      "measured_css_viewports": [[984, 738], [390, 844]],
+      "layout": "passed; existing theme retained, latest official value and descriptive change paired; mobile rows reflow into two columns per metric",
+      "horizontal_overflow": "not observed",
+      "console": "normal scenarios had no errors or warnings; window-unavailable intentionally returns HTTP 400",
+      "real_dom_or_screenshots": "not_read"
+    },
+    "tool_wait_note": "initial wait for the simulated failure's resume button reached tool deadline before the delayed failure finished; subsequent observed state and resume completed without changing synchronization code",
+    "cleanup": "all temporary QA servers stopped and their TemporaryDirectory stores removed; viewport reset; same preview tab returned to real local dashboard"
+  },
+  "tooling": {
+    "uv_lock_offline": "passed; application version update only",
+    "uv_sync_locked": "passed",
+    "uv_lock_check_offline": "passed",
+    "ruff_check": "passed",
+    "ruff_format_check": "passed; 58 Python files after formatting the added scenario",
+    "javascript_and_shell_syntax": "passed",
+    "wheel_offline_build": "passed",
+    "source_asset_parity": "passed; 29 source/assets files and fixed official OpenAPI included unchanged",
+    "chart_js_hash_and_mit_license": "passed; existing Chart.js 4.5.1 reused",
+    "private_paths_excluded_from_wheel": "passed",
+    "wheel_sha256": "810f3e84aae74d823750bf5c2004aa884cc7a5c2d3ca0be692786cbdeb725abf"
+  },
+  "live_local_check": {
+    "environment": "existing user-authorized SQLCipher store and project-owned Keychain configuration",
+    "version": "0.3.4",
+    "session_required": true,
+    "brief_7_and_30_day_http_contract": "passed",
+    "brief_matches_card_revisions_and_analysis_ids": "passed",
+    "insufficient_sample_gate": "passed",
+    "no_store": true,
+    "connected": true,
+    "journal_route_preserved": true,
+    "data_output": "none; only technical booleans returned",
+    "process": "local dashboard remains available at original loopback URL"
+  },
+  "not_run": [
+    "real summary DOM or screenshots",
+    "new user reconciliation of summary dates and values against WHOOP App; prior F2 feedback is not reused as this phase's manual acceptance",
+    "actual Journal export interoperability remains deferred optional work",
+    "full historical record reconciliation, real revocation or disaster recovery",
+    "other browsers and full assistive-technology certification"
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "phase": "F2.2 freshness, conditional on-open sync and recovery",
+  "date": "2026-09-07",
+  "application_version": "0.3.2",
+  "scope": "user-approved local dashboard; one conditional check per opening; manual recovery; no scheduler, cloud or model transmission",
+  "policy": {
+    "freshness_seconds": 1800,
+    "basis": "successful request with applicable historical start; earliest request end, initial capture and completion; reject future timestamps",
+    "not_a_provider_update_guarantee": true,
+    "records_and_wearing_history_used_to_trigger_retry": false,
+    "unfinished_run_requires_manual_recovery": true,
+    "existing_services_reused": ["SyncService", "WhoopClient", "Authlib OAuth", "SQLCipher Store", "CopilotService"]
+  },
+  "automated_tests": {
+    "command": "uv run pytest -q",
+    "passed": 346,
+    "failed": 0,
+    "elapsed_seconds": 3.62,
+    "previous_regressions": 323,
+    "new_cases": 23,
+    "data": "fabricated fixtures, simulated clients and test keys only",
+    "covered": [
+      "short history, pending, calibration and empty records are independent of freshness",
+      "30-day successful requests cover 7 days; 7-day requests do not cover 30 days",
+      "search all successful requests; newer narrow sync does not hide older applicable broad sync",
+      "threshold boundary, UTC midnight and clock rollback",
+      "late resume does not certify current data merely by completing now",
+      "two runtimes observe the shared worker and reopened runtime reuses success",
+      "conditional decision is rechecked inside the shared service lock",
+      "network, client construction and page-budget interruption preserve checkpoints and old views",
+      "explicit resume preserves original request; explicit new sync uses chosen window",
+      "authorization failure blocks client access and restored authorization permits sync",
+      "GET status does not start sync; conditional POST requires existing CSRF boundary and bounded inputs",
+      "first-page failure with no staged page expires and invalidates managed backup; expired backup restore rejected",
+      "clock rollback does not hide a newer failed run; another runtime's success clears old runtime error"
+    ]
+  },
+  "browser_acceptance": {
+    "browser": "Codex in-app browser",
+    "environment": "temporary synthetic database on loopback port 8767; simulated client only; no Keychain or WHOOP access",
+    "scenarios": {
+      "stale": "passed; on-open sync completes, reopening reuses success, changing to old 30-day window only changes prompt, manual sync updates it",
+      "stale-failure": "passed; one failed on-open attempt, reload does not retry, old data readable, original 7-day checkpoint retained while viewing 30 days, manual resume completes and clears errors",
+      "authorization-required": "passed; local records remain visible, sync disabled, resume hidden, local authorization guidance shown; no simulated client constructed",
+      "window-unavailable": "passed; failed 30-day read restores 7-day view, selection and matching freshness text; no simulated client constructed"
+    },
+    "visual_checks": {
+      "measured_css_viewports": [[984, 738], [390, 844]],
+      "freshness_and_recovery_layout": "passed with synthetic screenshots and DOM geometry",
+      "horizontal_overflow": "not observed",
+      "console": "no errors or warnings in successful stale scenario; window-unavailable deliberately returns HTTP 400",
+      "real_dom_or_screenshots": "not_read"
+    },
+    "cleanup": "temporary QA servers stopped and their databases removed by TemporaryDirectory; viewport reset; deliverable restored to local real dashboard"
+  },
+  "tooling": {
+    "uv_sync_locked": "passed",
+    "ruff_check": "passed",
+    "ruff_format_check": "passed; 53 Python files",
+    "javascript_and_shell_syntax": "passed",
+    "lockfile_offline_check": "passed after normal uv lock; initial offline resolution lacked registry metadata",
+    "wheel_offline_build": "passed",
+    "wheel_source_asset_parity": "passed; 27 source/assets files and fixed official OpenAPI included unchanged",
+    "chart_js_hash_and_mit_license": "passed; existing Chart.js 4.5.1 reused",
+    "runtime_and_tests_excluded_from_wheel": "passed",
+    "wheel_sha256": "69edd6ff81d55afa5d9e5a89d07b77b785620a1d26578eb6110043fa824d7329"
+  },
+  "live_local_check": {
+    "environment": "existing user-authorized SQLCipher store and project-owned Keychain configuration",
+    "dashboard_version": "0.3.2",
+    "local_http_contract": "passed",
+    "on_open_result": "new_sync_completed",
+    "connected": true,
+    "data_output": "none; only technical pass status returned",
+    "process": "dashboard remains available at the original loopback URL"
+  },
+  "not_run": [
+    "waiting 30 real minutes to observe the browser-only label expiry; server boundary covered by synthetic clock tests",
+    "real OAuth revocation or deliberate live network failure injection",
+    "complete record-by-record history reconciliation against WHOOP App",
+    "other browsers and full assistive-technology certification"
+  ]
+}

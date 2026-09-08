@@ -1,0 +1,82 @@
+{
+  "phase": "F2.1 coverage, empty states and local browser acceptance",
+  "date": "2026-09-07",
+  "application_version": "0.3.1",
+  "scope": "existing local dashboard; no new cloud, model, data-source or account permissions",
+  "automated_tests": {
+    "command": "uv run pytest -q",
+    "data": "fabricated fixtures and test keys only",
+    "passed": 323,
+    "failed": 0,
+    "elapsed_seconds": 2.92,
+    "previous_regressions": 315,
+    "new_coverage_cases": 8,
+    "covered": [
+      "short history only in the latter half of a thirty-day window",
+      "distinct UTC record dates versus record count and valid observation count",
+      "multiple workouts on one date",
+      "pending, unscorable, calibrating and absent optional metrics",
+      "empty coverage with null dates",
+      "failed sync preserves previous data, source access and successful request",
+      "half-open midnight boundary excludes end-date records and gap markers"
+    ]
+  },
+  "browser_acceptance": {
+    "browser": "Codex in-app browser",
+    "environment": "independent loopback synthetic runner; temporary database; simulated client; no WHOOP network or Keychain access",
+    "runner": "uv run python tests/dashboard_scenarios.py --scenario short-history --port 8767",
+    "scenario_count": 8,
+    "scenarios": {
+      "short-history": "passed; 7/30-day switching, record coverage, latter-half-only insufficient data, same-date workouts, table, source details and Escape close",
+      "pending": "passed; records and dates remain visible, no numeric curve, simulated sync leaves scoring state intact",
+      "unscorable": "passed; explicit reason, no imputation and app-derived statistic label",
+      "calibrating": "passed; values excluded from statistics while original source value remains inspectable",
+      "missing-metric": "passed; recorded sleep without optional performance metric remains distinct from no records",
+      "empty": "passed; null dates, no observations, no invented wearing start or assumption of sync failure",
+      "sync-failure": "passed; old data visible, switching window keeps error, resume continues original request and clears error on success",
+      "status-unavailable": "passed; successful trend request does not erase status error; automatic retry clears it after status recovery"
+    },
+    "visual_checks": {
+      "measured_css_viewports": [[984, 738], [390, 844]],
+      "desktop_and_narrow_layout": "passed; screenshots and DOM geometry on fabricated content",
+      "narrow_statistics_layout": "adjusted to stack mean and comparison for readable labels",
+      "page_horizontal_overflow": "not observed in checked viewports",
+      "console": "no unexpected errors observed; status-unavailable intentionally returns HTTP 503",
+      "real_dom_or_screenshots": "not_read"
+    }
+  },
+  "tooling": {
+    "uv_sync_locked": "passed",
+    "ruff_check": "passed",
+    "ruff_format_check": "passed; 35 Python files",
+    "javascript_syntax": "passed",
+    "lockfile_offline_check": "passed",
+    "wheel_offline_build": "passed",
+    "wheel_source_asset_parity": "passed",
+    "official_openapi_and_chart_js_integrity": "passed; unchanged",
+    "runtime_and_tests_excluded_from_wheel": "passed"
+  },
+  "live_local_check": {
+    "coverage_and_status_http_contract": "passed",
+    "real_whoop_sync_this_phase": "not_run; no new sync needed",
+    "health_output": "none; only technical pass status returned"
+  },
+  "user_spot_check": {
+    "status": "passed_by_user_report",
+    "source": "user replied 一致 after being asked to compare recent dashboard records with WHOOP App locally",
+    "sample_dates_and_count": "not_collected",
+    "health_values": "not_collected",
+    "independent_agent_verification": false,
+    "scope": "user-confirmed spot check, not exhaustive history reconciliation"
+  },
+  "not_run": [
+    "complete record-by-record historical reconciliation against the user's WHOOP App",
+    "other browsers and complete accessibility or assistive-technology certification",
+    "real OAuth revocation, actual export mapping and production recovery"
+  ],
+  "limitations": [
+    "Captured record dates and counts are not wearing history or a guarantee of continuous coverage.",
+    "No records is not sufficient evidence of sync failure, non-wear or zero workout strain.",
+    "The approximate wearing-history clarification is not stored as personal data in this versionable evidence file."
+  ]
+}

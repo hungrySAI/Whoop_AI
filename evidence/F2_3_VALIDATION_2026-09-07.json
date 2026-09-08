@@ -1,0 +1,99 @@
+{
+  "phase": "F2.3 official Journal export and local read-only timeline",
+  "date": "2026-09-07",
+  "application_version": "0.3.3",
+  "scope": "user-approved local Journal ingestion and display; actual export not yet available",
+  "implemented": {
+    "reused": ["CSV/ZIP export parser", "source revisions and current selection", "SQLCipher Store and retention", "DashboardService official metric views", "local HTTP session and same-origin boundary"],
+    "mapping_version": 2,
+    "provider": "whoop_export",
+    "account_binding": "operator-confirmed local subject; not verified against OAuth account",
+    "date_semantics": "explicit reported date or cycle start; date-only values have no fabricated measured instant; explicit timezone day bounds for companion metrics",
+    "updates": "trusted local CLI import; API sync does not fetch Journal",
+    "projection": "mapped questions, answers, dates and necessary provenance only; no raw rows, unmapped fields, source paths or identity columns",
+    "lifecycle": "current versions only; original source retention and managed-backup cleanup reused; absent rows in a new export are not deletion events",
+    "model_transmission": false,
+    "new_dependencies_or_schema": false
+  },
+  "automated_tests": {
+    "command": "uv run pytest -q",
+    "passed": 382,
+    "failed": 0,
+    "elapsed_seconds": 3.26,
+    "previous_regressions": 346,
+    "new_cases": 36,
+    "data": "fabricated Journal fixtures, simulated clients and test keys only",
+    "covered": [
+      "explicit long and wide mappings, CSV/ZIP parity and legacy mapping behavior",
+      "operator confirmation and stable identity excluding answers",
+      "date-only precision without metric/activity creation; explicit clock requirement for instants",
+      "calendar labels, explicit offset precedence, DST 23/25-hour days and missing midnight",
+      "ambiguous or nonexistent naive timestamps rejected",
+      "duplicate imports, corrected answers, later arrival of old export, stale evidence rejection",
+      "API companion half-open day bounds and latest pending score retention",
+      "pagination and page clamp after source removal",
+      "SQLCipher expiry, managed backup invalidation and unavailable evidence",
+      "timeline and evidence recheck concurrent deletion",
+      "HTTP projection, session, origin, invalid parameter and source boundaries"
+    ]
+  },
+  "synthetic_cli": {
+    "environment": "temporary synthetic database removed after use",
+    "first_inserted": 5,
+    "repeat_inserted": 0,
+    "repeat_duplicates": 5,
+    "result": "passed"
+  },
+  "browser_acceptance": {
+    "browser": "Codex in-app browser",
+    "environment": "temporary synthetic database on loopback 8767; simulated client; no WHOOP or Keychain access",
+    "scenarios": {
+      "journal": "passed; date grouping, 7/30 days, explicit no versus unanswered, multiline and literal HTML text, Journal/API provenance and Escape, return to overview",
+      "journal-pages": "passed; 25 rows across 20/5 pages, previous/next boundary states and return to first page",
+      "journal-empty": "passed; no fabricated rows; official export instructions",
+      "journal-legacy": "passed; legacy rows require explicit mapping and do not display guessed questions",
+      "journal-unavailable": "passed; rejected 30-day request keeps prior 7-day rows, selected window and matching freshness; refresh clears error"
+    },
+    "visual_checks": {
+      "measured_css_viewports": [[984, 738], [390, 844]],
+      "layout": "passed; existing local design, collapsible import metadata, readable date groups and companion metrics",
+      "horizontal_overflow": "not observed",
+      "html_fixture_executed": false,
+      "console": "no errors or warnings in normal Journal scenario; unavailable scenario deliberately returns HTTP 400",
+      "real_dom_or_screenshots": "not_read"
+    },
+    "cleanup": "temporary servers stopped; TemporaryDirectory databases removed; viewport reset; deliverable returned to real local dashboard"
+  },
+  "tooling": {
+    "uv_lock_offline": "passed; version metadata update only",
+    "uv_sync_locked": "passed",
+    "uv_lock_check_offline": "passed",
+    "ruff_check": "passed",
+    "ruff_format_check": "passed; 56 Python files",
+    "javascript_and_shell_syntax": "passed",
+    "wheel_offline_build": "passed",
+    "wheel_source_asset_parity": "passed; 28 files and fixed OpenAPI included unchanged",
+    "chart_js_hash_and_mit_license": "passed; existing Chart.js 4.5.1 reused",
+    "runtime_and_tests_excluded_from_wheel": "passed",
+    "wheel_verification_note": "initial verification referenced a nonexistent minified filename; corrected to the existing chart.umd.js and reran successfully without changing package assets",
+    "wheel_sha256": "904de2b11e4b0506b2a96582e5ea18b121ee42bc449be195635d2abc38838d40"
+  },
+  "live_local_check": {
+    "environment": "existing user-authorized SQLCipher store and project-owned Keychain configuration",
+    "dashboard_version": "0.3.3",
+    "session_required": true,
+    "journal_7_and_30_day_http_contract": "passed",
+    "journal_no_store": true,
+    "existing_dashboard_and_status": "passed",
+    "connected": true,
+    "data_output": "none; only technical booleans returned",
+    "process": "dashboard remains available at original loopback URL"
+  },
+  "not_run": [
+    "actual WHOOP Journal CSV/ZIP interoperability, date semantics, account association and imported-row reconciliation; export not yet downloaded",
+    "actual Journal browser DOM or screenshots",
+    "complete WHOOP historical record reconciliation",
+    "real deletion/revocation or production disaster recovery",
+    "other browsers and full assistive-technology certification"
+  ]
+}

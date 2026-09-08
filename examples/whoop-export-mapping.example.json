@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "resource": "physiological_cycles",
+  "member": null,
+  "identity_columns": ["Synthetic cycle key"],
+  "start": {"column": "Synthetic start", "format": "iso8601"},
+  "end": {"column": "Synthetic end", "format": "iso8601"},
+  "timezone": "from_timestamp",
+  "metrics": [
+    {"column": "Synthetic HRV ms", "metric": "whoop.hrv_rmssd", "unit": "ms"},
+    {"column": "Synthetic recovery percent", "metric": "whoop.recovery_score", "unit": "%"},
+    {"column": "Synthetic resting HR bpm", "metric": "whoop.resting_heart_rate", "unit": "bpm"}
+  ]
+}

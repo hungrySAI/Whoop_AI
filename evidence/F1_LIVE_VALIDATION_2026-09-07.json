@@ -1,0 +1,47 @@
+{
+  "date": "2026-09-07",
+  "scope": "First owner-authorized local WHOOP OAuth and six-resource sync smoke test",
+  "recording_policy": "Technical pass/fail only; no health values, raw responses, external account IDs, credentials, exact query windows or runtime IDs in this versionable record",
+  "live_checks": {
+    "user_completed_local_setup_and_browser_authorization": "passed",
+    "documented_loopback_callback": "passed",
+    "six_read_scopes_and_offline": "passed",
+    "application_specific_os_keychain_access": "passed",
+    "six_resource_sync": "passed",
+    "resume_from_checkpoint_after_compatibility_fix": "passed",
+    "sqlcipher_open_and_integrity": "passed",
+    "foreign_keys": "passed",
+    "retention_deadlines_present": "passed",
+    "completed_sync_replay_without_network_or_duplicates": "passed",
+    "local_analysis_reproduction": "passed"
+  },
+  "compatibility_fix": {
+    "resource": "workout",
+    "schema": "WorkoutScore",
+    "optional_fields": ["distance_meter", "altitude_gain_meter", "altitude_change_meter"],
+    "behavior": "Treat null as omitted only in the validation copy for these three fields; preserve raw nulls; reject invalid non-null types and null required fields",
+    "pinned_openapi_modified": false,
+    "regression_data": "Constructed from existing synthetic fixture; no real response copied"
+  },
+  "automated_regression": {
+    "command": "uv run --locked --offline --cache-dir /private/tmp/whoop-uv-cache pytest -q",
+    "passed": 260,
+    "failed": 0,
+    "output": "260 passed in 2.72s",
+    "data": "Synthetic fixtures and fabricated credentials only"
+  },
+  "ruff": {
+    "command": "uv run --locked --offline --cache-dir /private/tmp/whoop-uv-cache ruff check .",
+    "status": "passed",
+    "output": "All checks passed!"
+  },
+  "not_run": [
+    "Dedicated real token refresh/rotation and revocation tests",
+    "Actual WHOOP CSV or ZIP mapping",
+    "Complete historical and per-field reconciliation",
+    "Actual encrypted backup recovery exercise and cross-device key recovery",
+    "Full OS permission-prompt UI testing",
+    "Real health-data transmission to a model",
+    "Production deployment"
+  ]
+}

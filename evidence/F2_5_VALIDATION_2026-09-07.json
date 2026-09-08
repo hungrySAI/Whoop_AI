@@ -1,0 +1,96 @@
+{
+  "date": "2026-09-07",
+  "phase": "F2.5 local calendar-week review",
+  "application_version": "0.3.5",
+  "scope": {
+    "default": "last completed UTC calendar week",
+    "selection": "current week and preceding 11 weeks, keyed by exact Monday date",
+    "metrics": "existing recovery, sleep performance, cycle strain, HRV, resting heart rate, workout strain",
+    "calculation": "existing mean_change/1 over two consecutive complete calendar weeks; only descriptive status allows comparison",
+    "current_week": "progress through now only; zero-length Monday handled without empty-window analysis",
+    "sources": "current locally retained records, same-read whole report and paginated detail; 30 rows per page",
+    "synchronization": "existing six-resource service, recent 30-day requests in weekly view; selection itself is local and older weeks are not backfilled",
+    "new_dependencies_or_schema": false,
+    "permanent_report_copies": false,
+    "journal_required": false,
+    "new_background_tasks_or_external_transmission": false
+  },
+  "automated_tests": {
+    "result": "444 passed",
+    "new_weekly_cases": 37,
+    "previous_regression_cases": 407,
+    "runtime_seconds": 4.42,
+    "data": "fabricated records, temporary stores, test keys and mocked HTTP only",
+    "coverage": [
+      "six-metric 14-day midpoint, registered means, analysis ids and reproduction",
+      "canonical bounded Monday selection, year/DST UTC boundaries, current-week clipping and zero length",
+      "short history, one sample in each week, unscored/calibrating/missing/empty states",
+      "35 same-day workouts remain separate; pagination 30/5 and clamping after deletion",
+      "fixed-date selection and whole-report detail refresh across Monday rollover",
+      "source changes during read, provider deletion and SQLCipher expiry refresh all six aggregates",
+      "session, query whitelist and duplicates, origin, no-store and curated HTTP projection"
+    ]
+  },
+  "synthetic_browser": {
+    "runner": "tests/dashboard_scenarios.py",
+    "scenario_count": 5,
+    "scenarios": {
+      "short-history": "passed; last complete week and short-history gate, current progress with waiting scores, source details/Escape, native earliest-week selection and empty/boundary state",
+      "weekly-complete": "passed; all six registered comparisons, desktop/mobile layout, detail focus, one explicit recent-30-day simulated sync retains selected week; overview restores 7-day selection and optional Journal remains available",
+      "weekly-pages": "passed; 35 workouts on one record date, 30/5 pages, next-page boundary and return",
+      "weekly-unavailable": "passed; failed week restores cached selection, labels and six rows; refresh clears error; failed page preserves first page and metric switch recovers",
+      "weekly-delayed": "passed; loading disables report sources and picker; late responses do not overwrite overview or Journal"
+    },
+    "measured_css_viewports": [
+      [
+        984,
+        738
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "page_horizontal_overflow": "not observed",
+    "mobile_details": "table scrolls within its container; heading receives focus",
+    "console": "normal inspected scenarios had no warnings/errors; unavailable scenario intentionally returns HTTP 400",
+    "real_dom_or_screenshots": "not_read",
+    "tool_notes": "An initial exact source-button locator used its visible text instead of its aria-label and found no match; actual accessible label was read and source inspection completed. Native select End worked after opening its popup. No product changes were required for these tool interactions.",
+    "cleanup": "temporary QA services stopped and TemporaryDirectory stores removed; viewport reset and preview returned to original local dashboard"
+  },
+  "tooling": {
+    "uv_lock_offline": "passed; application version only",
+    "uv_sync_locked": "passed",
+    "uv_lock_check_offline": "passed",
+    "ruff_check": "passed",
+    "ruff_format_check": "passed; 60 Python files",
+    "javascript_and_shell_syntax": "passed",
+    "wheel_offline_build": "passed",
+    "source_asset_parity": "passed; 30 source/assets files plus fixed official OpenAPI",
+    "chart_js_hash_and_mit_license": "passed; existing Chart.js 4.5.1 reused",
+    "private_paths_excluded_from_wheel": "passed",
+    "wheel_sha256": "50abc52c3bbc1aa904e08cdb5ab1d19941d0fd580dfe72d90b3e41f9852edf7d"
+  },
+  "live_local_check": {
+    "environment": "existing user-authorized SQLCipher store and project-owned Keychain configuration",
+    "version": "0.3.5",
+    "session_required": true,
+    "weekly_and_records_contract": true,
+    "whole_report_matches_detail": true,
+    "insufficient_sample_gate": true,
+    "current_week_progress_only": true,
+    "no_store": true,
+    "origin_gate": true,
+    "existing_overview_and_journal_preserved": true,
+    "connected": true,
+    "data_output": "none; only technical booleans",
+    "process": "local dashboard remains available at original loopback URL"
+  },
+  "not_run": [
+    "real weekly review DOM or screenshots",
+    "new user reconciliation of weekly dates and values against WHOOP App",
+    "actual Journal export interoperability remains deferred optional work",
+    "full historical reconciliation, real revocation and disaster recovery",
+    "other browsers and full assistive-technology certification"
+  ]
+}

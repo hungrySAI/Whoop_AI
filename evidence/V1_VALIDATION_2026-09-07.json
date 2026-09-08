@@ -1,0 +1,101 @@
+{
+  "milestone": "V1",
+  "validated_on_local_date": "2026-09-07",
+  "timezone": "America/Los_Angeles",
+  "application_version": "0.4.2",
+  "schema_version": 3,
+  "release_tag": "v1",
+  "scope": "Repository cleanup and private source-code publication; no runtime behavior changes.",
+  "checks": {
+    "uv_sync_locked": {
+      "status": "passed",
+      "packages_audited": 45
+    },
+    "pytest": {
+      "status": "passed",
+      "passed": 612,
+      "command": "uv run pytest -q"
+    },
+    "ruff": {
+      "status": "passed",
+      "command": "uv run ruff check ."
+    },
+    "javascript_syntax": "passed",
+    "synthetic_ui_scenarios": {
+      "status": "passed",
+      "count": 6
+    },
+    "launcher_shell_syntax": {
+      "status": "passed",
+      "scripts_checked": 3
+    },
+    "offline_build": {
+      "status": "passed",
+      "artifacts": [
+        "wheel",
+        "sdist"
+      ],
+      "runtime_files_in_packages": false,
+      "openapi_synthetic_fixture_and_vendor_license_present": true,
+      "note": "Existing uv cache used after an empty temporary cache lacked hatchling. Artifacts are temporary and are not uploaded."
+    },
+    "gitignore": {
+      "status": "passed",
+      "blocked_paths_tested": 46,
+      "allowed_paths_tested": 11
+    },
+    "markdown_local_links": {
+      "status": "passed",
+      "links_checked": 138
+    },
+    "git_diff_whitespace": {
+      "status": "passed",
+      "command": "git -c core.whitespace=cr-at-eol diff --cached --check",
+      "note": "Preserves the original CRLF bytes in the synthetic CSV fixture."
+    },
+    "index_security_review": {
+      "status": "passed",
+      "audited_files_excluding_this_summary": 124,
+      "audited_bytes_excluding_this_summary": 1535570,
+      "audited_manifest_sha256": "8f4294a22b317c1b2f5a38fcba6aad22b7112962131e3ff2e67c006c3056e75d",
+      "final_file_count_including_this_summary": 125,
+      "high_confidence_secrets": 0,
+      "private_keys": 0,
+      "jwt_tokens": 0,
+      "personal_home_paths": 0,
+      "symlinks": 0,
+      "binary_files": 0,
+      "runtime_data_paths": 0,
+      "manual_review": "Credential-like literals are explicit negative-test placeholders; email matches are synthetic examples or official WHOOP contact details. Demo evidence is synthetic; live evidence contains technical results only.",
+      "summary_review": "This file is generated from technical results only, with no credentials or health content.",
+      "limitation": "Pattern and content review reduces accidental disclosure risk; it is not a comprehensive security certification."
+    },
+    "github_repository": {
+      "status": "created_and_private_verified",
+      "repository": "hungrySAI/Whoop_AI",
+      "visibility": "private",
+      "note": "Push, remote tree equality and release existence are verified after this evidence is committed."
+    }
+  },
+  "cleanup": {
+    "historical_root_documents_archived": 3,
+    "runtime_source_and_venv_locations_preserved": true,
+    "finder_metadata_files_removed": 2,
+    "personal_absolute_review_links_replaced": true
+  },
+  "excluded": [
+    "real health data",
+    "encrypted databases and sidecars",
+    "OAuth configuration and tokens",
+    "Keychain contents",
+    "exports and backups",
+    "runtime logs and sessions",
+    "local caches and distribution archives"
+  ],
+  "not_run": [
+    "new live health-data access or synchronization",
+    "new real-data acceptance",
+    "cross-device recovery",
+    "cloud deployment"
+  ]
+}

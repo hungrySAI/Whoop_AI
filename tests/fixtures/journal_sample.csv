@@ -1,0 +1,7 @@
+Synthetic journal key,Synthetic reported date,Synthetic question,Synthetic answer,Synthetic private column
+journal-1,2026-09-06,今天是否外出散步？,是,DO_NOT_EXPOSE_SYNTHETIC_IDENTITY
+journal-2,2026-09-06,今天是否饮酒？,否,DO_NOT_EXPOSE_SYNTHETIC_IDENTITY
+journal-3,2026-09-05,今天是否午睡？,,DO_NOT_EXPOSE_SYNTHETIC_IDENTITY
+journal-4,2026-09-04,当天的补充记录,"完全虚构的示例：傍晚散步。
+保留原文，不自动解释。",DO_NOT_EXPOSE_SYNTHETIC_IDENTITY
+journal-5,2026-09-03,文本安全示例,<img src=x onerror=alert('synthetic')>,DO_NOT_EXPOSE_SYNTHETIC_IDENTITY

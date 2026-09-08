@@ -1,0 +1,111 @@
+{
+  "date": "2026-09-05",
+  "environment": "synthetic",
+  "python": "3.13.15",
+  "mcp_sdk": "1.29.1",
+  "automated_tests": {
+    "passed": 89,
+    "failed": 0,
+    "command": ".venv/bin/python -m pytest -q"
+  },
+  "ruff": {
+    "lint": "passed",
+    "format": "passed"
+  },
+  "uv_lock_check": "passed",
+  "demo": {
+    "whoop_records": 14,
+    "csv_records": 14,
+    "hrv_mean_ms": 53.0,
+    "hrv_half_window_change_ms": 14.0,
+    "training_action_status": "proposed"
+  },
+  "mcp_protocol": "passed: real local stdio SDK client/server subprocess tests",
+  "backup_restore": {
+    "backup_integrity": "ok",
+    "restored_integrity": "ok",
+    "original_analysis_reproduces": true,
+    "temporary_snapshots_removed_after_check": true
+  },
+  "gitignore": [
+    {
+      "path": "src/whoop_copilot/imports/parser.py",
+      "ignored": false,
+      "pass": true
+    },
+    {
+      "path": "src/whoop_copilot/data/models.py",
+      "ignored": false,
+      "pass": true
+    },
+    {
+      "path": "tests/fixtures/imports/sample.csv",
+      "ignored": false,
+      "pass": true
+    },
+    {
+      "path": "tests/fixtures/synthetic_whoop.json",
+      "ignored": false,
+      "pass": true
+    },
+    {
+      "path": "tests/fixtures/synthetic_body.csv",
+      "ignored": false,
+      "pass": true
+    },
+    {
+      "path": "examples/mcp-server.example.json",
+      "ignored": false,
+      "pass": true
+    },
+    {
+      "path": "runtime/synthetic/copilot.sqlite3",
+      "ignored": true,
+      "pass": true
+    },
+    {
+      "path": "data/private.db",
+      "ignored": true,
+      "pass": true
+    },
+    {
+      "path": "imports/private_export.csv",
+      "ignored": true,
+      "pass": true
+    },
+    {
+      "path": ".env",
+      "ignored": true,
+      "pass": true
+    },
+    {
+      "path": ".env.local",
+      "ignored": true,
+      "pass": true
+    },
+    {
+      "path": ".env.example",
+      "ignored": false,
+      "pass": true
+    },
+    {
+      "path": "secrets/credential.txt",
+      "ignored": true,
+      "pass": true
+    },
+    {
+      "path": ".codex/auth.json",
+      "ignored": true,
+      "pass": true
+    },
+    {
+      "path": ".venv/pyvenv.cfg",
+      "ignored": true,
+      "pass": true
+    }
+  ],
+  "real_whoop": "not_run",
+  "codex_actual_client": "not_run",
+  "model_calls": "not_run",
+  "production": "not_run"
+}

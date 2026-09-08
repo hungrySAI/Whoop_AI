@@ -1,0 +1,76 @@
+{
+  "phase": "F2 local dashboard first version",
+  "date": "2026-09-07",
+  "application_version": "0.3.0",
+  "environment": "macOS arm64 / Python 3.13.15",
+  "scope": "local browser, existing shared services and authorized SQLCipher database",
+  "automated_tests": {
+    "data": "fabricated fixtures, temporary databases, test encryption keys and simulated responses only",
+    "command": "uv run pytest -q",
+    "passed": 315,
+    "failed": 0,
+    "elapsed_seconds": 2.86,
+    "previous_regressions": 260,
+    "dashboard_cases": 55,
+    "covered": [
+      "six registered metrics across both supported windows agree with shared analysis and reproduce",
+      "latest pending, unscorable and calibrating records do not fall back to older valid values",
+      "missing fields and dates remain null; same-day activities remain individual observations",
+      "cycle and workout strain remain separate",
+      "measurement, metric update, interval update, capture and knowledge timestamps remain distinct",
+      "source revisions, late responses, deletion, expiry and cleanup during a view",
+      "loopback peer, exact Host, Origin and Fetch Metadata boundaries",
+      "HttpOnly SameSite session, sync CSRF, bounded JSON and static file whitelist",
+      "sanitized unexpected errors without raw exception propagation to server logging",
+      "thread-owned connections, concurrent sync deduplication, failure and durable resume",
+      "real-mode HTTP reads use a test SQLCipher database without a plaintext copy",
+      "demo and invalid real launches reject before protected store access"
+    ]
+  },
+  "tooling": {
+    "uv_sync_locked": "passed",
+    "ruff_check": "passed",
+    "ruff_format_check": "passed; 33 Python files",
+    "javascript_syntax": "passed; node --check",
+    "launcher_shell_syntax": "passed; zsh -n",
+    "lockfile_offline_check": "passed",
+    "wheel_offline_build": "passed",
+    "wheel_source_and_asset_parity": "passed",
+    "official_openapi_unchanged_in_wheel": "passed",
+    "chart_js_version": "4.5.1",
+    "chart_js_license_and_source_integrity": "passed; MIT and fixed package/file hashes included",
+    "packaged_demo_marker": "synthetic=true",
+    "runtime_files_excluded_from_wheel": "passed",
+    "git_runtime_and_source_isolation": "passed; 8 F2 paths"
+  },
+  "live_checks": {
+    "real_forced_token_refresh": "passed",
+    "thirty_day_request_six_resource_sync": "passed",
+    "real_http_six_metrics_both_windows": "passed",
+    "curated_source_details": "passed",
+    "response_statistics_checked_locally": "passed",
+    "real_http_manual_six_resource_sync": "passed",
+    "final_server_parallel_dashboard_and_status_reads": "passed; connected and idle after sync",
+    "health_data_handling": "all records, numeric checks and credentials remain local; only technical check statuses returned",
+    "browser_preview_handoff": "requested for the same loopback URL; app returned queued"
+  },
+  "not_run": [
+    "browser interaction automation, DOM inspection, screenshots and visual or responsive acceptance",
+    "Finder double-click launcher UI",
+    "real OAuth revocation",
+    "actual WHOOP export column mapping",
+    "complete history, daily coverage and field-by-field reconciliation",
+    "production recovery exercise"
+  ],
+  "outside_scope": [
+    "cloud deployment or remote access",
+    "health data sent to models, real MCP or WebMCP",
+    "webhooks, scheduled synchronization, notifications and coaching"
+  ],
+  "limitations": [
+    "A 30-day requested window does not establish that every date contains data.",
+    "Displayed values remain in local browser memory until the page is refreshed or closed.",
+    "Loopback, same-origin and session checks are not independent authentication between local OS users or programs.",
+    "HTTP and syntax verification do not establish browser visual or interaction acceptance."
+  ]
+}

@@ -1,0 +1,43 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "whoop-personal-copilot"
+version = "0.4.2"
+description = "Local, synthetic-first WHOOP Personal Copilot foundation"
+requires-python = ">=3.11"
+dependencies = [
+  "mcp>=1.26,<2",
+  "Authlib>=1.6,<2",
+  "httpx>=0.28,<1",
+  "keyring>=25,<26",
+  "sqlcipher3>=0.6.2,<0.7",
+  "jsonschema>=4.23,<5",
+  "starlette>=1.6,<2",
+  "uvicorn>=0.52,<1",
+]
+
+[project.scripts]
+whoop-copilot = "whoop_copilot.cli:main"
+whoop-copilot-mcp = "whoop_copilot.mcp_server:main"
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "pytest-asyncio>=1,<2", "ruff>=0.12,<1"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/whoop_copilot"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"resources/whoop-openapi.json" = "whoop_copilot/resources/whoop-openapi.json"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "UP"]

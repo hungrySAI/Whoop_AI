@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="在本机查看 WHOOP 官方指标、趋势与来源。">
+  <meta name="whoop-csrf" content="__CSRF_TOKEN__">
+  <title>Personal Copilot · 身体状态</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/assets/app.css">
+  <script defer src="/assets/chart.js"></script>
+  <script defer src="/assets/app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要内容</a>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Personal Copilot 首页"><span class="brand-mark">P<span>·</span>C</span><span>PERSONAL<br><b>COPILOT</b></span></a>
+    <span class="source-tag"><span class="status-dot"></span> WHOOP 数据 · 本地</span>
+    <span id="environment" class="environment">正在连接本地数据</span>
+  </header>
+  <main id="main" class="workspace">
+    <section class="page-heading">
+      <div><p class="eyebrow">YOUR DAILY SIGNALS</p><h1 id="page-title">身体状态</h1><p id="window-label" class="muted">正在读取数据窗口…</p></div>
+      <div class="heading-actions"><div class="segmented" role="group" aria-label="数据窗口"><button data-days="7" aria-pressed="true">7 天</button><button data-days="30" aria-pressed="false">30 天</button></div><button id="sync-button" class="primary"><span aria-hidden="true">↻</span> 同步数据</button></div>
+    </section>
+    <nav class="view-nav" aria-label="看板视图"><button id="view-overview" aria-pressed="true">身体状态</button><button id="view-cycles" aria-pressed="false">恢复回看</button><button id="view-weekly" aria-pressed="false">周回顾</button><button id="view-journal" aria-pressed="false">日志时间线</button></nav>
+    <section id="freshness" class="freshness" role="status"><div><strong id="freshness-title">正在检查数据新鲜度…</strong><p id="freshness-note">已有本地数据将先显示。</p></div><span id="freshness-check"></span></section>
+    <div id="notice" class="notice" role="status" hidden></div>
+    <div class="layout">
+      <div class="main-column">
+        <section id="daily-summary" class="daily-summary" aria-labelledby="daily-title">
+          <div class="daily-heading"><div><p class="eyebrow">DAILY BRIEF</p><h2 id="daily-title">每日摘要</h2></div><span id="daily-as-of" class="muted"></span></div>
+          <p id="daily-headline" class="daily-headline">正在整理最近记录…</p>
+          <section aria-label="最近官方观测" id="cards" class="cards" aria-busy="true">
+          <article class="metric-card"><p>恢复分</p><strong>—</strong><span class="muted">读取最近观测…</span></article>
+          <article class="metric-card"><p>睡眠表现</p><strong>—</strong><span class="muted">读取最近观测…</span></article>
+          <article class="metric-card"><p>周期负荷</p><strong>—</strong><span class="muted">读取最近观测…</span></article>
+          </section>
+          <details class="brief-method"><summary>摘要与变化的口径</summary><p>各项展示所选窗口内最近的官方记录，可能来自不同日期。「今天」按记录起点所在的 UTC 日期判断，恢复随关联周期，睡眠可能包含小睡。</p><p id="brief-window"></p><p>变化是本应用对有效观测的描述统计，不代表改善或恶化；每半段至少 2 条才比较。窗口包含今天的已发生部分，未结束周期的当前负荷也可能参与统计。</p></details>
+        </section>
+        <section class="panel trend-panel" aria-labelledby="trend-title">
+          <div class="panel-heading"><div><p class="eyebrow">TRENDS</p><h2 id="trend-title" tabindex="-1">看见变化</h2></div><span class="quiet-badge">WHOOP 官方观测</span></div>
+          <div id="metric-picker" class="metric-picker" role="group" aria-label="趋势指标"></div>
+          <div class="trend-summary"><div><span id="mean-label" class="muted">有效观测均值</span><div class="mean-value"><strong id="mean-value">—</strong><span id="mean-unit"></span></div></div><div class="change-box"><span class="muted">所选窗口：后半段 − 前半段</span><strong id="change-value">—</strong><small id="change-note">本应用描述统计</small></div></div>
+          <div class="coverage-summary"><p id="coverage-range">正在读取记录日期…</p><p id="coverage" class="muted"></p><p id="coverage-states" class="muted" hidden></p></div>
+          <div class="chart-wrap"><canvas id="trend-chart" role="img" aria-label="选定指标的官方观测趋势；全部观测可在下方表格中查看。"></canvas><p id="chart-empty" class="chart-empty" hidden><strong id="chart-empty-title"></strong><span id="chart-empty-note"></span></p></div>
+          <div class="chart-notes"><span id="chart-legend"><i class="legend-dot"></i> 单条官方观测</span><span>时间按 UTC · 缺口不补值</span></div>
+          <p class="stat-note">记录日期范围不代表逐日都有记录，也不等于佩戴天数。均值和变化由本应用计算，只使用窗口内有效观测；前后半窗口样本不足时不作趋势判断。</p>
+          <details class="observations"><summary>查看观测与来源 <span id="record-count"></span></summary><div class="table-scroll"><table><thead><tr><th scope="col">记录时间 · UTC</th><th scope="col">观测值</th><th scope="col">状态</th><th scope="col">来源</th></tr></thead><tbody id="records"></tbody></table></div><div class="pager"><button id="previous-page" class="text-button">← 上一页</button><span id="page-label" class="muted"></span><button id="next-page" class="text-button">下一页 →</button></div></details>
+        </section>
+        <section id="cycles-panel" class="panel cycles-panel" aria-labelledby="cycles-title" hidden>
+          <div class="panel-heading"><div><p class="eyebrow">RECOVERY IN CONTEXT</p><h2 id="cycles-title">把一次恢复看完整</h2></div><button id="cycles-refresh" class="text-button">刷新恢复回看</button></div>
+          <p class="cycles-intro">沿着 WHOOP 的关联，查看同一周期的睡眠、恢复与负荷。生理周期不一定是一个日历日。</p>
+          <p id="cycles-coverage" class="muted"></p>
+          <div id="cycles-list" class="cycles-list" role="group" aria-label="选择恢复记录"></div>
+          <div id="cycles-pagination" class="pager" hidden><button id="cycles-previous" class="text-button">← 上一页周期</button><span id="cycles-page" class="muted"></span><button id="cycles-next" class="text-button">下一页周期 →</button></div>
+          <section id="cycle-detail" class="cycle-detail" aria-labelledby="cycle-detail-title" hidden><h3 id="cycle-detail-title" tabindex="-1"></h3><p id="cycle-interval" class="muted"></p><div id="cycle-groups" class="cycle-groups"></div></section>
+          <details class="brief-method cycles-method"><summary>关联与保留口径</summary><p>7/30 天按周期起点的 UTC 日期筛选。只显示 WHOOP 明确关联的恢复与睡眠，关联睡眠可起于所选窗口之外；不以同日最近睡眠或较晚小睡替代。</p><p>各项保留官方评分与状态，未评分不补零。记录并列不说明因果，也不代表本周期负荷发生在这次恢复之前。</p><p>视图使用本机当前保留记录。修正、删除或到期会改变刷新后的结果；关联缺失不保证再次同步就能补齐。训练负荷仍在原趋势中单独查看。</p></details>
+        </section>
+        <section id="weekly-panel" class="panel weekly-panel" aria-labelledby="weekly-title" hidden>
+          <div class="panel-heading"><div><p class="eyebrow">WEEK IN REVIEW</p><h2 id="weekly-title">回看一周</h2></div><button id="weekly-refresh" class="text-button">刷新周回顾</button></div>
+          <div class="weekly-picker"><button id="weekly-older" class="text-button" disabled>← 更早一周</button><select id="weekly-choice" aria-label="选择回顾周" disabled><option>正在读取可用周…</option></select><button id="weekly-newer" class="text-button" disabled>更近一周 →</button></div>
+          <p id="weekly-state" class="weekly-state">正在整理本机已采集记录…</p>
+          <div class="weekly-columns" aria-hidden="true"><span>指标 · 有效观测均值</span><span>所选周</span><span>前一周</span><span>周间变化</span></div>
+          <div id="weekly-metrics" class="weekly-metrics"></div>
+          <details class="brief-method weekly-method"><summary>周回顾的统计与保留口径</summary><p>周一至周日，按记录起点所在的 UTC 日期归属。恢复随关联周期，睡眠可能包含小睡；周期负荷与训练负荷分别比较均值，不求和成周负荷。</p><p>日历周已结束不代表已采集完整。两周各至少 2 条有效观测才比较；记录日期和样本不同，差值不代表改善或恶化。本周只显示截至现在的进度。</p><p>从本机当前保留记录重新计算，官方修正会更新结果；来源删除或到期后相应数据不再可用。这不是永久存档。</p></details>
+          <section id="weekly-detail" class="weekly-detail" aria-labelledby="weekly-detail-title" hidden><div class="panel-heading"><h3 id="weekly-detail-title" tabindex="-1">观测与来源</h3><button id="weekly-detail-close" class="text-button">收起记录</button></div><p id="weekly-detail-note" class="muted"></p><div class="table-scroll"><table><thead><tr><th scope="col">所属周</th><th scope="col">记录时间 · UTC</th><th scope="col">观测值</th><th scope="col">状态</th><th scope="col">来源</th></tr></thead><tbody id="weekly-records"></tbody></table></div><div class="pager"><button id="weekly-records-previous" class="text-button">← 上一页记录</button><span id="weekly-records-page" class="muted"></span><button id="weekly-records-next" class="text-button">下一页记录 →</button></div></section>
+        </section>
+        <section id="journal-panel" class="panel journal-panel" aria-labelledby="journal-title" hidden>
+          <div class="panel-heading"><div><p class="eyebrow">JOURNAL</p><h2 id="journal-title">一天的背景</h2></div><button id="refresh-journal" class="text-button">刷新日志</button></div>
+          <details class="journal-import"><summary id="journal-import-state">正在读取导入状态…</summary><p id="journal-import-time" class="muted"></p><p class="muted">可选历史补充，无需定期导出；「同步数据」只更新 API 指标。</p></details>
+          <p id="journal-unmapped" class="notice" hidden></p>
+          <div id="journal-empty" class="journal-empty" hidden><h3 id="journal-empty-title"></h3><p id="journal-empty-note"></p><p>日常摘要与趋势无需 Journal。以后需要补充历史时，可在本机核对官方导出并导入。</p></div>
+          <div id="journal-entries" class="journal-entries"></div>
+          <div id="journal-pagination" class="pager" hidden><button id="journal-previous" class="text-button">← 上一页日志</button><span id="journal-page" class="muted"></span><button id="journal-next" class="text-button">下一页日志 →</button></div>
+          <p class="stat-note">问答保留填写原文。指标按每组标注的时区与日期并列；有多条时展示最近一条，可查看来源。同日出现不代表因果关系。</p>
+        </section>
+      </div>
+      <aside class="side-column" aria-label="数据连接与同步">
+        <section class="panel connection"><div class="panel-heading"><h2>数据连接</h2><span id="connection-dot" class="status-dot"></span></div><div class="provider"><span class="provider-icon">W</span><div><strong>WHOOP</strong><p id="connection-state" class="muted">正在检查连接…</p></div></div><dl class="connection-details"><div><dt>最近成功同步</dt><dd id="last-sync">—</dd></div><div><dt>最近成功请求范围</dt><dd id="sync-window">—</dd></div><div><dt id="planned-window-label">同步检查范围</dt><dd id="planned-window">—</dd></div><div><dt>本地保留期限</dt><dd id="retention">—</dd></div></dl><p id="catchup-note" class="stat-note"></p><div id="sync-progress" class="sync-progress" hidden><span id="progress-label">同步中…</span><progress id="progress" max="6" value="0">同步中</progress></div><p id="sync-error" class="error-text" hidden></p><p id="resume-window" class="stat-note" hidden></p><button id="resume-button" class="secondary" hidden>继续上次同步</button><p id="sync-policy" class="sync-policy"></p></section>
+        <section class="panel source-note"><p class="eyebrow">UNDERSTAND THE NUMBERS</p><h2>每个数字，都有来处</h2><p>概览展示窗口内最近一条记录。点击「来源」可查看测量时间、WHOOP 更新时间与本机采集时间。</p><div class="source-rule"><span class="rule-label">官方指标</span><span>保留 WHOOP 原有评分</span></div><div class="source-rule"><span class="rule-label">本应用统计</span><span>均值、前后半区间变化</span></div></section>
+        <p class="local-note"><span aria-hidden="true">◈</span> 数据留在本机<br><span>打开时按需更新 · 没有后台定时任务</span></p>
+      </aside>
+    </div>
+    <footer><span>PERSONAL COPILOT</span><span id="view-time">本地视图</span></footer>
+  </main>
+  <dialog id="evidence-dialog" aria-labelledby="evidence-title"><div class="evidence-panel"><div class="panel-heading"><p class="eyebrow">SOURCE DETAIL</p><button id="close-evidence" class="close-button" aria-label="关闭来源详情" autofocus>×</button></div><h2 id="evidence-title">观测来源</h2><p id="evidence-state" class="muted" role="status">正在读取…</p><div id="evidence-value" class="evidence-value"></div><dl id="evidence-fields" class="evidence-fields"></dl><p id="evidence-note" class="stat-note"></p></div></dialog>
+</body>
+</html>

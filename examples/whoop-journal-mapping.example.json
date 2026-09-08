@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "resource": "journal",
+  "member": null,
+  "identity_columns": ["Synthetic journal key"],
+  "start": {"column": "Synthetic reported date", "format": "%Y-%m-%d"},
+  "end": null,
+  "timezone": "America/Los_Angeles",
+  "metrics": [],
+  "journal": {
+    "date_basis": "reported_date",
+    "time_precision": "date",
+    "subject_confirmation": "operator_confirmed_local_subject",
+    "answers": [
+      {"question_column": "Synthetic question", "answer_column": "Synthetic answer"}
+    ]
+  }
+}
